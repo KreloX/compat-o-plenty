@@ -4,12 +4,13 @@
     {
       "conditions": [
         {
-          "type": "blueprint:quark_flag",
+          "type": "quark:flag",
           "flag": "variant_chests"
         }
       ],
       "recipe": {
         "type": "minecraft:crafting_shaped",
+        "category": "misc",
         "key": {
           "#": {
             "item": "biomesoplenty:redwood_planks"
@@ -22,7 +23,8 @@
         ],
         "result": {
           "item": "compatoplenty:redwood_chest"
-        }
+        },
+        "show_notification": true
       }
     }
   ]

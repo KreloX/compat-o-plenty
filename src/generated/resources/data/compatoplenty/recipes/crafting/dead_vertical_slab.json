@@ -4,12 +4,13 @@
     {
       "conditions": [
         {
-          "type": "blueprint:quark_flag",
+          "type": "quark:flag",
           "flag": "vertical_slabs"
         }
       ],
       "recipe": {
         "type": "minecraft:crafting_shaped",
+        "category": "misc",
         "key": {
           "S": {
             "item": "biomesoplenty:dead_slab"
@@ -23,7 +24,8 @@
         "result": {
           "count": 3,
           "item": "compatoplenty:dead_vertical_slab"
-        }
+        },
+        "show_notification": true
       }
     }
   ]

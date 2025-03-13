@@ -4,19 +4,18 @@
     {
       "conditions": [
         {
-          "type": "blueprint:quark_flag",
+          "type": "quark:flag",
           "flag": "variant_ladders"
         }
       ],
       "recipe": {
         "type": "minecraft:crafting_shaped",
+        "category": "misc",
         "key": {
           "#": {
             "item": "minecraft:stick"
           },
-          "P": {
-            "item": "biomesoplenty:redwood_planks"
-          }
+          "P": []
         },
         "pattern": [
           "# #",
@@ -26,7 +25,8 @@
         "result": {
           "count": 4,
           "item": "compatoplenty:redwood_ladder"
-        }
+        },
+        "show_notification": true
       }
     }
   ]

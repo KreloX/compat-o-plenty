@@ -1,0 +1,18 @@
+// 1.20.1	2025-03-13T21:44:10.3655941	Tags for minecraft:item mod id compatoplenty
+d4d50428a703cb9e1af3bfeba17903a897678ce2 data/blueprint/tags/items/wooden_beehives.json
+b268197b20c22e05afd9e75f5c66f53f20e892a4 data/blueprint/tags/items/wooden_bookshelves.json
+0cbce776ab38fee6f4f29b69b813d769cfec9daf data/blueprint/tags/items/wooden_chests.json
+35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/blueprint/tags/items/wooden_chiseled_bookshelves.json
+a589984e473c81cc339aede8293b4f51c59fc628 data/blueprint/tags/items/wooden_ladders.json
+affe2672610b3d9fa65b39e73d30ac36c158bc24 data/blueprint/tags/items/wooden_trapped_chests.json
+fc4f387c4fb1d6e85ea6d3fad8f9221e17979427 data/boatload/tags/items/furnace_boats.json
+f6ddf645971aa0424439b073abe9ea32b60d8ade data/boatload/tags/items/large_boats.json
+0e5850ece598bc9b3f3599b8bc3acccf1350bade data/farmersdelight/tags/items/cabinets/wooden.json
+f2f4d312f4ce5eccabb86cf94d2a99f5549b9a92 data/minecraft/tags/items/non_flammable_wood.json
+9d21f0c158afe4a730150ccc217b680a6b34b2a7 data/minecraft/tags/items/planks.json
+8196a5090eff3a9889df27d15078eeb3219bca67 data/minecraft/tags/items/slabs.json
+35ed7518349a17c4e8e0fa2f508b4d6ef7d27990 data/minecraft/tags/items/stairs.json
+dfa4208049dac04a236e0ff21b9c3232205572ef data/minecraft/tags/items/walls.json
+b5fc9101f1187f8ef2ed08efa6b7a20861f168c3 data/twigs/tags/items/tables.json
+39a8db6cc8de3d9b18a5f2ae0272770c5084dc78 data/woodworks/tags/items/leaf_piles.json
+e3c87909b9dca9316dbe7edc0605749e3b4311c7 data/woodworks/tags/items/wooden_boards.json

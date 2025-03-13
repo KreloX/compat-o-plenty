@@ -8,7 +8,7 @@
           "modid": "twigs"
         },
         {
-          "type": "blueprint:quark_flag",
+          "type": "quark:flag",
           "flag": "vertical_slabs"
         }
       ],

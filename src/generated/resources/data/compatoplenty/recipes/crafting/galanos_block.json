@@ -4,12 +4,13 @@
     {
       "conditions": [
         {
-          "type": "blueprint:quark_flag",
+          "type": "quark:flag",
           "flag": "midori"
         }
       ],
       "recipe": {
         "type": "minecraft:crafting_shaped",
+        "category": "misc",
         "key": {
           "#": {
             "item": "compatoplenty:glowing_moss_paste"
@@ -21,7 +22,8 @@
         ],
         "result": {
           "item": "compatoplenty:galanos_block"
-        }
+        },
+        "show_notification": true
       }
     }
   ]

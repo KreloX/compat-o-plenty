@@ -19,6 +19,7 @@
       ],
       "recipe": {
         "type": "minecraft:crafting_shaped",
+        "category": "misc",
         "key": {
           "#": {
             "item": "biomesoplenty:mahogany_planks"
@@ -31,7 +32,8 @@
         ],
         "result": {
           "item": "compatoplenty:mahogany_chest"
-        }
+        },
+        "show_notification": true
       }
     }
   ]

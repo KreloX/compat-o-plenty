@@ -4,12 +4,13 @@
     {
       "conditions": [
         {
-          "type": "blueprint:quark_flag",
+          "type": "quark:flag",
           "flag": "vertical_slabs"
         }
       ],
       "recipe": {
         "type": "minecraft:crafting_shapeless",
+        "category": "misc",
         "ingredients": [
           {
             "item": "compatoplenty:white_sandstone_vertical_slab"

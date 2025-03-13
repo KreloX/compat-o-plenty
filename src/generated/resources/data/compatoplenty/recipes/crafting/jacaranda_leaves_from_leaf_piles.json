@@ -19,6 +19,7 @@
       ],
       "recipe": {
         "type": "minecraft:crafting_shaped",
+        "category": "misc",
         "group": "leaves",
         "key": {
           "#": {
@@ -31,7 +32,8 @@
         ],
         "result": {
           "item": "biomesoplenty:jacaranda_leaves"
-        }
+        },
+        "show_notification": true
       }
     }
   ]

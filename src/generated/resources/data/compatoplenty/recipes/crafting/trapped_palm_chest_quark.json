@@ -1,0 +1,28 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "quark:flag",
+          "flag": "variant_chests"
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shapeless",
+        "category": "misc",
+        "ingredients": [
+          {
+            "item": "compatoplenty:palm_chest"
+          },
+          {
+            "item": "minecraft:tripwire_hook"
+          }
+        ],
+        "result": {
+          "item": "compatoplenty:trapped_palm_chest"
+        }
+      }
+    }
+  ]
+}

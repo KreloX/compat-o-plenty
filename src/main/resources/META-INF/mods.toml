@@ -1,32 +1,34 @@
-modLoader="javafml"
-loaderVersion="[43,)"
-license="Apache-2.0"
+modLoader = "javafml"
+loaderVersion = "$loader_version_range"
+license = "$mod_license"
+issueTrackerURL="$mod_github/issues"
 
 [[mods]]
-modId="compatoplenty"
-authors = "Selene and Mana"
-version="${file.jarVersion}"
-displayName="Compat O' Plenty"
-logoFile="logo.png"
-description='''
-A mod designed to fill the gap in content between Biomes O' Plenty and Quark, Farmer's Delight, and Buzzier Bees.
-'''
+modId = "$mod_id"
+version = "$mod_version"
+displayName = "$mod_name"
+updateJSONURL="$mod_github/raw/$mc_version/update.json"
+displayURL = "$mod_url"
+logoFile ="logo.png"
+credits = "$mod_credits"
+authors = "$mod_authors"
+description = '''$mod_description'''
 
-[[dependencies.compatoplenty]]
+[[dependencies.$mod_id]]
     modId="forge"
     mandatory=true
-    versionRange="[43.2.0,)"
+    versionRange="$forge_version_range"
     ordering="NONE"
     side="BOTH"
-[[dependencies.compatoplenty]]
+[[dependencies.$mod_id]]
     modId="blueprint"
     mandatory=true
-    versionRange="[1.19.2-6.1.0,)"
+    versionRange="[$blueprint_version,)"
     ordering="AFTER"
     side="BOTH"
-[[dependencies.compatoplenty]]
+[[dependencies.$mod_id]]
     modId="biomesoplenty"
     mandatory=true
-    versionRange="[1.19.2-17.1.1.163,)"
+    versionRange="[$biomes_o_plenty_version,)"
     ordering="AFTER"
     side="BOTH"

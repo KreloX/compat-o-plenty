@@ -19,6 +19,7 @@
       ],
       "recipe": {
         "type": "minecraft:crafting_shaped",
+        "category": "misc",
         "key": {
           "S": {
             "item": "biomesoplenty:hellbark_planks"
@@ -32,7 +33,8 @@
         "result": {
           "count": 3,
           "item": "compatoplenty:hellbark_boards"
-        }
+        },
+        "show_notification": true
       }
     }
   ]

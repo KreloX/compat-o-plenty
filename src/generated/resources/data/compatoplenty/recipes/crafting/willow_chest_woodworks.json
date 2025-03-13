@@ -19,6 +19,7 @@
       ],
       "recipe": {
         "type": "minecraft:crafting_shaped",
+        "category": "misc",
         "key": {
           "#": {
             "item": "biomesoplenty:willow_planks"
@@ -31,7 +32,8 @@
         ],
         "result": {
           "item": "compatoplenty:willow_chest"
-        }
+        },
+        "show_notification": true
       }
     }
   ]

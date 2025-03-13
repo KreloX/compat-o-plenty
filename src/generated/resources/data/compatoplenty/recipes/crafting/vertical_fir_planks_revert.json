@@ -4,12 +4,13 @@
     {
       "conditions": [
         {
-          "type": "blueprint:quark_flag",
+          "type": "quark:flag",
           "flag": "vertical_planks"
         }
       ],
       "recipe": {
         "type": "minecraft:crafting_shapeless",
+        "category": "misc",
         "ingredients": [
           {
             "item": "compatoplenty:vertical_fir_planks"

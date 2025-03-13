@@ -1,6 +1,0 @@
-{
-    "parent": "minecraft:block/wall_inventory",
-    "textures": {
-        "wall": "compatoplenty:block/polished_rose_quartz_bricks"
-    }
-}

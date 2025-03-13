@@ -1,69 +1,68 @@
 buildscript {
     repositories {
-        maven { url = 'https://maven.minecraftforge.net' }
-        maven { url = 'https://maven.parchmentmc.org' }
+        maven { url "https://maven.minecraftforge.net" }
+        maven { url "https://maven.parchmentmc.org" }
         mavenCentral()
     }
     dependencies {
-        classpath(group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true)
-        classpath 'org.parchmentmc:librarian:1.+'
+        classpath(group: "net.minecraftforge.gradle", name: "ForgeGradle", version: "5.1.+", changing: true)
+        classpath "org.parchmentmc:librarian:1.+"
     }
 }
-apply plugin: 'net.minecraftforge.gradle'
-apply plugin: 'maven-publish'
-apply plugin: 'org.parchmentmc.librarian.forgegradle'
+apply plugin: "net.minecraftforge.gradle"
+apply plugin: "org.parchmentmc.librarian.forgegradle"
 
 
-version = project.version
-group = 'com.seleneandmana.compatoplenty'
-archivesBaseName = 'Compat-O-Plenty'
+version = mod_version
+group = mod_group
+archivesBaseName = mod_id
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
-println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getProperty('java.vm.version') + '(' + System.getProperty('java.vendor') + ') Arch: ' + System.getProperty('os.arch'))
+println("Java: " + System.getProperty("java.version") + " JVM: " + System.getProperty("java.vm.version") + "(" + System.getProperty("java.vendor") + ") Arch: " + System.getProperty("os.arch"))
 minecraft {
-    mappings channel: 'parchment', version: '2022.11.06-1.19.2'
+    mappings channel: mappings_channel, version: mappings_version
 
     runs {
         client {
-            workingDirectory project.file('run')
-            property 'forge.logging.markers', 'REGISTRIES'
-            property 'forge.logging.console.level', 'debug'
-            property 'mixin.env.remapRefMap', 'true'
-            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
+            workingDirectory project.file("run")
+            property "forge.logging.markers", "REGISTRIES"
+            property "forge.logging.console.level", "debug"
+            property "mixin.env.remapRefMap", "true"
+            property "mixin.env.refMapRemappingFile", "$projectDir/build/createSrgToMcp/output.srg"
 
             mods {
-                compatoplenty {
+                "$mod_id" {
                     source sourceSets.main
                 }
             }
         }
 
         server {
-            workingDirectory project.file('run')
-            property 'forge.logging.markers', 'REGISTRIES'
-            property 'forge.logging.console.level', 'debug'
-            property 'mixin.env.remapRefMap', 'true'
-            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
+            workingDirectory project.file("run")
+            property "forge.logging.markers", "REGISTRIES"
+            property "forge.logging.console.level", "debug"
+            property "mixin.env.remapRefMap", "true"
+            property "mixin.env.refMapRemappingFile", "$projectDir/build/createSrgToMcp/output.srg"
 
             mods {
-                compatoplenty {
+                "$mod_id" {
                     source sourceSets.main
                 }
             }
         }
 
         data {
-            workingDirectory project.file('run')
-            property 'forge.logging.markers', 'REGISTRIES'
-            property 'forge.logging.console.level', 'debug'
-            property 'mixin.env.remapRefMap', 'true'
-            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
+            workingDirectory project.file("run")
+            property "forge.logging.markers", "REGISTRIES"
+            property "forge.logging.console.level", "debug"
+            property "mixin.env.remapRefMap", "true"
+            property "mixin.env.refMapRemappingFile", "$projectDir/build/createSrgToMcp/output.srg"
 
-            args '--mod', 'compatoplenty', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
+            args "--mod", "$mod_id", "--all", "--output", file("src/generated/resources/"), "--existing", file("src/main/resources/")
 
             mods {
-                compatoplenty {
+                "$mod_id" {
                     source sourceSets.main
                 }
             }
@@ -71,47 +70,69 @@ minecraft {
     }
 }
 
-
-sourceSets.main.resources { srcDir 'src/generated/resources' }
+sourceSets.main.resources { srcDir "src/generated/resources" }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.19.2-43.2.0'
-    implementation fg.deobf("com.teamabnormals:blueprint:1.19.2-6.1.1")
-    implementation fg.deobf("curse.maven:bop-220318:4128419")
-    implementation fg.deobf("curse.maven:farmersdelight-398521:3999157")
-    implementation fg.deobf("com.teamabnormals:boatload:1.19.2-4.2.1")
-    compileOnly fg.deobf("curse.maven:woodworks-543610:4396958")
-    implementation fg.deobf("curse.maven:clayworks-592162:4396960")
+    minecraft "net.minecraftforge:forge:$mc_version-$forge_version"
 
-    runtimeOnly fg.deobf("curse.maven:terrablender-563928:4095397")
-    runtimeOnly fg.deobf("curse.maven:quark-243121:4426258")
-    runtimeOnly fg.deobf("curse.maven:autoreglib-250363:4100299")
-    runtimeOnly fg.deobf("curse.maven:twigs-496913:4160178")
+    runtimeOnly fg.deobf("maven.modrinth:emi:$emi_version")
 
-    runtimeOnly fg.deobf("curse.maven:jei-238222:4087658")
+    implementation fg.deobf("maven.modrinth:biomes-o-plenty:$biomes_o_plenty_version")
+    implementation fg.deobf("maven.modrinth:glitchcore:$glitchcore_version")
+    runtimeOnly fg.deobf("com.github.glitchfiend:TerraBlender-forge:$terrablender_version")
+
+    implementation fg.deobf("com.teamabnormals:blueprint:$blueprint_version")
+
+    runtimeOnly fg.deobf("com.teamabnormals:boatload:$boatload_version")
+    compileOnly fg.deobf("com.teamabnormals:boatload:$boatload_version")
+    runtimeOnly fg.deobf("maven.modrinth:woodworks:$woodworks_version")
+    compileOnly fg.deobf("maven.modrinth:woodworks:$woodworks_version")
+    runtimeOnly fg.deobf("maven.modrinth:clayworks:$clayworks_version")
+    compileOnly fg.deobf("maven.modrinth:clayworks:$clayworks_version")
+
+    runtimeOnly fg.deobf("maven.modrinth:quark:$quark_version")
+    compileOnly fg.deobf("maven.modrinth:quark:$quark_version")
+    runtimeOnly fg.deobf("maven.modrinth:zeta:$zeta_version")
+    compileOnly fg.deobf("maven.modrinth:zeta:$zeta_version")
+
+    runtimeOnly fg.deobf("maven.modrinth:farmers-delight:$farmers_delight_version")
+    compileOnly fg.deobf("maven.modrinth:farmers-delight:$farmers_delight_version")
+
+    runtimeOnly fg.deobf("maven.modrinth:twigs:$twigs_version")
+    compileOnly fg.deobf("maven.modrinth:twigs:$twigs_version")
 }
 
 repositories {
-    maven {
-        url "https://cursemaven.com"
-        content {
-            includeGroup "curse.maven"
-        }
-    }
-    maven {
-        url "https://maven.jaackson.me"
+    maven { url "https://maven.jaackson.me" }
+    maven { url "https://api.modrinth.com/maven" }
+}
+
+tasks.withType(ProcessResources).configureEach {
+    var replaceProperties = [
+            mc_version          : mc_version, mc_version_range: mc_version_range,
+            forge_version       : forge_version, forge_version_range: forge_version_range,
+            loader_version_range: loader_version_range,
+            mod_id              : mod_id, mod_name: mod_name, mod_version: mod_version, mod_license: mod_license,
+            mod_github          : mod_github, mod_url: mod_url, mod_credits: mod_credits,
+            mod_authors         : mod_authors, mod_description: mod_description, pack_format_number: pack_format_number,
+            blueprint_version   : blueprint_version, biomes_o_plenty_version: biomes_o_plenty_version
+    ]
+    inputs.properties replaceProperties
+
+    filesMatching(["META-INF/mods.toml", "pack.mcmeta"]) {
+        expand replaceProperties + [project: project]
     }
 }
 
 jar {
     manifest {
         attributes([
-                "Specification-Title"     : "Compat O' Plenty",
-                "Specification-Vendor"    : "Selene and Mana",
+                "Specification-Title"     : mod_name,
+                "Specification-Vendor"    : mod_authors,
                 "Specification-Version"   : "1",
-                "Implementation-Title"    : "Compat O' Plenty",
+                "Implementation-Title"    : mod_name,
                 "Implementation-Version"  : project.version,
-                "Implementation-Vendor"   : "Selene and Mana",
+                "Implementation-Vendor"   : mod_authors,
                 "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
     }

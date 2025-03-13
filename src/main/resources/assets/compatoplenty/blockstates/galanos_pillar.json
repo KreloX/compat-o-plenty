@@ -1,7 +1,0 @@
-{
-    "variants": {
-        "axis=y":  { "model": "compatoplenty:block/galanos_pillar" },
-        "axis=z":   { "model": "compatoplenty:block/galanos_pillar", "x": 90 },
-        "axis=x":   { "model": "compatoplenty:block/galanos_pillar", "x": 90, "y": 90 }
-    }
-}
