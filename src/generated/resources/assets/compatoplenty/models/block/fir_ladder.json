@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/ladder",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "particle": "compatoplenty:block/fir_ladder",
+    "texture": "compatoplenty:block/fir_ladder"
+  }
+}

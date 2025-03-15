@@ -1,0 +1,26 @@
+{
+  "variants": {
+    "type=double": {
+      "model": "compatoplenty:block/orange_sandstone_bricks"
+    },
+    "type=east": {
+      "model": "compatoplenty:block/orange_sandstone_brick_vertical_slab",
+      "uvlock": true,
+      "y": 90
+    },
+    "type=north": {
+      "model": "compatoplenty:block/orange_sandstone_brick_vertical_slab",
+      "uvlock": true
+    },
+    "type=south": {
+      "model": "compatoplenty:block/orange_sandstone_brick_vertical_slab",
+      "uvlock": true,
+      "y": 180
+    },
+    "type=west": {
+      "model": "compatoplenty:block/orange_sandstone_brick_vertical_slab",
+      "uvlock": true,
+      "y": 270
+    }
+  }
+}

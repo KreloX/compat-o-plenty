@@ -1,0 +1,9 @@
+{
+  "parent": "twigs:block/template_table_leg",
+  "textures": {
+    "bottom": "compatoplenty:block/palm_table_bottom",
+    "particle": "biomesoplenty:block/palm_planks",
+    "side": "compatoplenty:block/palm_table",
+    "top": "compatoplenty:block/palm_table_top"
+  }
+}

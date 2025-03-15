@@ -1,4 +1,4 @@
-// 1.20.1	2025-03-13T21:44:10.3655941	Tags for minecraft:item mod id compatoplenty
+// 1.20.1	2025-03-15T16:54:12.843378	Tags for minecraft:item mod id compatoplenty
 d4d50428a703cb9e1af3bfeba17903a897678ce2 data/blueprint/tags/items/wooden_beehives.json
 b268197b20c22e05afd9e75f5c66f53f20e892a4 data/blueprint/tags/items/wooden_bookshelves.json
 0cbce776ab38fee6f4f29b69b813d769cfec9daf data/blueprint/tags/items/wooden_chests.json
@@ -13,6 +13,9 @@ f2f4d312f4ce5eccabb86cf94d2a99f5549b9a92 data/minecraft/tags/items/non_flammable
 8196a5090eff3a9889df27d15078eeb3219bca67 data/minecraft/tags/items/slabs.json
 35ed7518349a17c4e8e0fa2f508b4d6ef7d27990 data/minecraft/tags/items/stairs.json
 dfa4208049dac04a236e0ff21b9c3232205572ef data/minecraft/tags/items/walls.json
+b315b8431b05944e267daf6bdc9dd8744b1be452 data/quark/tags/items/hedges.json
+35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/quark/tags/items/hollow_logs.json
+ba66bf8b82233a3ba648181b3a491436e304c080 data/quark/tags/items/vertical_slabs.json
 b5fc9101f1187f8ef2ed08efa6b7a20861f168c3 data/twigs/tags/items/tables.json
 39a8db6cc8de3d9b18a5f2ae0272770c5084dc78 data/woodworks/tags/items/leaf_piles.json
 e3c87909b9dca9316dbe7edc0605749e3b4311c7 data/woodworks/tags/items/wooden_boards.json

@@ -14,7 +14,7 @@ import net.minecraftforge.fml.common.Mod;
 
 import java.util.function.Supplier;
 
-import static com.seleneandmana.compatoplenty.core.registry.CompatBlocks.*;
+import static com.seleneandmana.compatoplenty.core.registry.COPBlocks.*;
 
 @Mod.EventBusSubscriber(modid = CompatOPlenty.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class BlockColoring {

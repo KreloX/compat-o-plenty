@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "compatoplenty:block/galanos_slab"
+    },
+    "type=double": {
+      "model": "compatoplenty:block/galanos_block"
+    },
+    "type=top": {
+      "model": "compatoplenty:block/galanos_slab_top"
+    }
+  }
+}

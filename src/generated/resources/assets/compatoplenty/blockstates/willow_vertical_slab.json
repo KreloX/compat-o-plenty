@@ -1,0 +1,26 @@
+{
+  "variants": {
+    "type=double": {
+      "model": "biomesoplenty:block/willow_planks"
+    },
+    "type=east": {
+      "model": "compatoplenty:block/willow_vertical_slab",
+      "uvlock": true,
+      "y": 90
+    },
+    "type=north": {
+      "model": "compatoplenty:block/willow_vertical_slab",
+      "uvlock": true
+    },
+    "type=south": {
+      "model": "compatoplenty:block/willow_vertical_slab",
+      "uvlock": true,
+      "y": 180
+    },
+    "type=west": {
+      "model": "compatoplenty:block/willow_vertical_slab",
+      "uvlock": true,
+      "y": 270
+    }
+  }
+}

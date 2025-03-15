@@ -1,0 +1,9 @@
+{
+  "parent": "twigs:block/template_table_inventory",
+  "textures": {
+    "bottom": "compatoplenty:block/mahogany_table_bottom",
+    "particle": "biomesoplenty:block/mahogany_planks",
+    "side": "compatoplenty:block/mahogany_table",
+    "top": "compatoplenty:block/mahogany_table_top"
+  }
+}

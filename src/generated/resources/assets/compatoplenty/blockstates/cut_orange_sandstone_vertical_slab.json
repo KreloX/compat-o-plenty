@@ -1,0 +1,26 @@
+{
+  "variants": {
+    "type=double": {
+      "model": "biomesoplenty:block/cut_orange_sandstone"
+    },
+    "type=east": {
+      "model": "compatoplenty:block/cut_orange_sandstone_vertical_slab",
+      "uvlock": true,
+      "y": 90
+    },
+    "type=north": {
+      "model": "compatoplenty:block/cut_orange_sandstone_vertical_slab",
+      "uvlock": true
+    },
+    "type=south": {
+      "model": "compatoplenty:block/cut_orange_sandstone_vertical_slab",
+      "uvlock": true,
+      "y": 180
+    },
+    "type=west": {
+      "model": "compatoplenty:block/cut_orange_sandstone_vertical_slab",
+      "uvlock": true,
+      "y": 270
+    }
+  }
+}
