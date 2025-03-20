@@ -1,8 +1,8 @@
 package com.seleneandmana.compatoplenty.core.data.server.tags;
 
+import biomesoplenty.api.block.BOPWoodTypes;
 import com.ninni.twigs.TwigsTags;
 import com.seleneandmana.compatoplenty.core.CompatOPlenty;
-import com.seleneandmana.compatoplenty.core.other.WoodMaterial;
 import com.seleneandmana.compatoplenty.core.registry.COPBlocks;
 import com.seleneandmana.compatoplenty.core.registry.COPItems;
 import com.teamabnormals.blueprint.core.other.tags.BlueprintItemTags;
@@ -15,6 +15,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.RegistryObject;
+import org.violetmoon.quark.base.Quark;
 import vectorwing.farmersdelight.common.tag.ModTags;
 
 import java.util.concurrent.CompletableFuture;
@@ -26,24 +27,49 @@ public class COPItemTagsProvider extends ItemTagsProvider {
 
     @Override
     protected void addTags(Provider provider) {
-        for (var woodMaterial : WoodMaterial.WOOD_MATERIALS) {
-            tag(ItemTags.PLANKS).add(asItem(COPBlocks.VERTICAL_PLANKS.get(woodMaterial)));
-            tag(BlueprintItemTags.WOODEN_CHESTS).add(asItem(COPBlocks.CHESTS.get(woodMaterial)));
-            tag(BlueprintItemTags.WOODEN_TRAPPED_CHESTS).add(asItem(COPBlocks.TRAPPED_CHESTS.get(woodMaterial)));
-            tag(BlueprintItemTags.WOODEN_LADDERS).add(asItem(COPBlocks.LADDERS.get(woodMaterial)));
-            tag(BlueprintItemTags.WOODEN_BEEHIVES).add(asItem(COPBlocks.BEEHIVES.get(woodMaterial)));
-            tag(BlueprintItemTags.WOODEN_BOOKSHELVES).add(asItem(COPBlocks.BOOKSHELVES.get(woodMaterial)));
+        for (var woodType : COPBlocks.WOOD_PROPERTIES.keySet()) {
+            tag(ItemTags.PLANKS).add(asItem(COPBlocks.VERTICAL_PLANKS.get(woodType)));
+            tag(BlueprintItemTags.WOODEN_CHESTS).add(asItem(COPBlocks.CHESTS.get(woodType)));
+            tag(BlueprintItemTags.WOODEN_TRAPPED_CHESTS).add(asItem(COPBlocks.TRAPPED_CHESTS.get(woodType)));
+            tag(BlueprintItemTags.WOODEN_LADDERS).add(asItem(COPBlocks.LADDERS.get(woodType)));
+            tag(BlueprintItemTags.WOODEN_BEEHIVES).add(asItem(COPBlocks.BEEHIVES.get(woodType)));
+            tag(BlueprintItemTags.WOODEN_BOOKSHELVES).add(asItem(COPBlocks.BOOKSHELVES.get(woodType)));
             tag(BlueprintItemTags.WOODEN_CHISELED_BOOKSHELVES); // TODO
-            tag(BlueprintItemTags.WOODEN_BOARDS).add(asItem(COPBlocks.BOARDS.get(woodMaterial)));
-            tag(BlueprintItemTags.LEAF_PILES).add(asItem(COPBlocks.LEAF_PILES.get(woodMaterial)));
-            tag(ModTags.WOODEN_CABINETS).add(asItem(COPBlocks.CABINETS.get(woodMaterial)));
-            tag(TwigsTags.TABLES_ITEM).add(asItem(COPBlocks.TABLES.get(woodMaterial)));
-            tag(TagUtil.itemTag("quark", "hollow_logs")); // TODO
-            tag(TagUtil.itemTag("quark", "vertical_slabs")).add(asItem(COPBlocks.VERTICAL_SLABS.get(woodMaterial)));
-            tag(TagUtil.itemTag("quark", "hedges")).add(asItem(COPBlocks.HEDGES.get(woodMaterial)));
+            tag(BlueprintItemTags.WOODEN_BOARDS).add(asItem(COPBlocks.BOARDS.get(woodType)));
+            tag(BlueprintItemTags.LEAF_PILES).add(asItem(COPBlocks.LEAF_PILES.get(woodType)));
+            tag(BlueprintItemTags.FURNACE_BOATS).add(COPItems.FURNACE_BOATS.get(woodType).get());
+            tag(BlueprintItemTags.LARGE_BOATS).add(COPItems.LARGE_BOATS.get(woodType).get());
+            tag(ModTags.WOODEN_CABINETS).add(asItem(COPBlocks.CABINETS.get(woodType)));
+            tag(TwigsTags.TABLES_ITEM).add(asItem(COPBlocks.TABLES.get(woodType)));
+            tag(TagUtil.itemTag(Quark.MOD_ID, "hollow_logs")); // TODO
+            tag(TagUtil.itemTag(Quark.MOD_ID, "vertical_slabs")).add(asItem(COPBlocks.VERTICAL_SLABS.get(woodType)));
+            tag(TagUtil.itemTag(Quark.MOD_ID, "hedges")).add(asItem(COPBlocks.HEDGES.get(woodType)));
         }
-        tag(ItemTags.SLABS).add(
-                asItem(COPBlocks.BLACK_SANDSTONE_BRICK_SLAB),
+        // Blueprint tags
+        tag(BlueprintItemTags.LEAF_PILES).add(
+                asItem(COPBlocks.ORIGIN_LEAF_PILE),
+                asItem(COPBlocks.FLOWERING_OAK_LEAF_PILE),
+                asItem(COPBlocks.RAINBOW_BIRCH_LEAF_PILE),
+                asItem(COPBlocks.CYPRESS_LEAF_PILE),
+                asItem(COPBlocks.SNOWBLOSSOM_LEAF_PILE),
+                asItem(COPBlocks.RED_MAPLE_LEAF_PILE),
+                asItem(COPBlocks.ORANGE_MAPLE_LEAF_PILE),
+                asItem(COPBlocks.YELLOW_MAPLE_LEAF_PILE)
+        );
+        // Quark tags
+        tag(TagUtil.itemTag(Quark.MOD_ID, "hedges")).add(
+                asItem(COPBlocks.FLOWERING_OAK_HEDGE),
+                asItem(COPBlocks.RAINBOW_BIRCH_HEDGE),
+                asItem(COPBlocks.ORIGIN_HEDGE),
+                asItem(COPBlocks.CYPRESS_HEDGE),
+                asItem(COPBlocks.SNOWBLOSSOM_HEDGE),
+                asItem(COPBlocks.RED_MAPLE_HEDGE),
+                asItem(COPBlocks.ORANGE_MAPLE_HEDGE),
+                asItem(COPBlocks.YELLOW_MAPLE_HEDGE)
+        );
+        // Minecraft tags
+        tag(ItemTags.SLABS).add(asItem(
+                        COPBlocks.BLACK_SANDSTONE_BRICK_SLAB),
                 asItem(COPBlocks.ORANGE_SANDSTONE_BRICK_SLAB),
                 asItem(COPBlocks.WHITE_SANDSTONE_BRICK_SLAB),
                 asItem(COPBlocks.GALANOS_SLAB),
@@ -65,18 +91,21 @@ public class COPItemTagsProvider extends ItemTagsProvider {
                 asItem(COPBlocks.POLISHED_ROSE_QUARTZ_BRICK_WALL)
         );
         tag(ItemTags.NON_FLAMMABLE_WOOD).add(
-                asItem(COPBlocks.VERTICAL_SLABS.get(WoodMaterial.HELLBARK)),
-                asItem(COPBlocks.VERTICAL_PLANKS.get(WoodMaterial.HELLBARK)),
-                asItem(COPBlocks.BOARDS.get(WoodMaterial.HELLBARK)),
-                asItem(COPBlocks.BOOKSHELVES.get(WoodMaterial.HELLBARK)),
-                asItem(COPBlocks.LADDERS.get(WoodMaterial.HELLBARK)),
-                asItem(COPBlocks.BEEHIVES.get(WoodMaterial.HELLBARK)),
-                asItem(COPBlocks.CHESTS.get(WoodMaterial.HELLBARK)),
-                asItem(COPBlocks.TRAPPED_CHESTS.get(WoodMaterial.HELLBARK)),
-                COPItems.LARGE_BOATS.get(WoodMaterial.HELLBARK).get()
+                asItem(COPBlocks.TABLES.get(BOPWoodTypes.HELLBARK)),
+                asItem(COPBlocks.CABINETS.get(BOPWoodTypes.HELLBARK)),
+                asItem(COPBlocks.HOLLOW_LOGS.get(BOPWoodTypes.HELLBARK)),
+                asItem(COPBlocks.VERTICAL_SLABS.get(BOPWoodTypes.HELLBARK)),
+                asItem(COPBlocks.VERTICAL_PLANKS.get(BOPWoodTypes.HELLBARK)),
+                asItem(COPBlocks.BOARDS.get(BOPWoodTypes.HELLBARK)),
+                asItem(COPBlocks.POSTS.get(BOPWoodTypes.HELLBARK)),
+                asItem(COPBlocks.STRIPPED_POSTS.get(BOPWoodTypes.HELLBARK)),
+                asItem(COPBlocks.BOOKSHELVES.get(BOPWoodTypes.HELLBARK)),
+                asItem(COPBlocks.LADDERS.get(BOPWoodTypes.HELLBARK)),
+                asItem(COPBlocks.BEEHIVES.get(BOPWoodTypes.HELLBARK)),
+                asItem(COPBlocks.CHESTS.get(BOPWoodTypes.HELLBARK)),
+                asItem(COPBlocks.TRAPPED_CHESTS.get(BOPWoodTypes.HELLBARK)),
+                COPItems.LARGE_BOATS.get(BOPWoodTypes.HELLBARK).get()
         );
-        tag(BlueprintItemTags.FURNACE_BOATS).add(COPItems.FURNACE_BOATS.get(WoodMaterial.HELLBARK).get());
-        tag(BlueprintItemTags.LARGE_BOATS).add(COPItems.LARGE_BOATS.get(WoodMaterial.HELLBARK).get());
     }
 
     public static Item asItem(RegistryObject<? extends Block> block) {

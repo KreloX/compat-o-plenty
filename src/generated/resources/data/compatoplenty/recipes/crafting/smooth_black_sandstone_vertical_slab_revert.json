@@ -10,7 +10,7 @@
       ],
       "recipe": {
         "type": "minecraft:crafting_shapeless",
-        "category": "misc",
+        "category": "building",
         "ingredients": [
           {
             "item": "compatoplenty:smooth_black_sandstone_vertical_slab"

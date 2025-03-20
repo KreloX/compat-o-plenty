@@ -13,7 +13,7 @@
         "category": "misc",
         "key": {
           "#": {
-            "tag": "minecraft:birch_logs"
+            "tag": "biomesoplenty:maple_logs"
           },
           "L": {
             "item": "biomesoplenty:yellow_maple_leaves"

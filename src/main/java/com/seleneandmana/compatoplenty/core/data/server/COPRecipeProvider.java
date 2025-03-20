@@ -1,15 +1,18 @@
 package com.seleneandmana.compatoplenty.core.data.server;
 
+import biomesoplenty.api.BOPAPI;
 import biomesoplenty.api.block.BOPBlocks;
 import biomesoplenty.api.item.BOPItems;
+import biomesoplenty.init.ModTags;
 import com.seleneandmana.compatoplenty.core.CompatOPlenty;
-import com.seleneandmana.compatoplenty.core.other.WoodMaterial;
 import com.seleneandmana.compatoplenty.core.registry.COPItems;
+import com.seleneandmana.compatoplenty.integrations.boatload.COPBoatTypes;
 import com.teamabnormals.blueprint.common.block.chest.BlueprintChestBlock;
 import com.teamabnormals.blueprint.common.block.chest.BlueprintTrappedChestBlock;
 import com.teamabnormals.blueprint.core.api.conditions.BlueprintAndCondition;
 import com.teamabnormals.blueprint.core.api.conditions.ConfigValueCondition;
 import com.teamabnormals.blueprint.core.util.TagUtil;
+import com.teamabnormals.boatload.core.data.server.BoatloadRecipeProvider;
 import com.teamabnormals.woodworks.core.WoodworksConfig;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
@@ -47,7 +50,7 @@ import static com.seleneandmana.compatoplenty.core.registry.COPBlocks.*;
 import static net.minecraft.world.item.crafting.Ingredient.of;
 
 public class COPRecipeProvider extends RecipeProvider {
-    public static final ResourceLocation QUARK_FLAG = new ResourceLocation("quark", "flag");
+    public static final ResourceLocation QUARK_FLAG = new ResourceLocation(Quark.MOD_ID, "flag");
     public static final String VERTICAL_SLABS_FLAG = "vertical_slabs";
     public static final String SANDSTONE_BRICKS_FLAG = "sandstone_bricks";
     public static final String MIDORI_FLAG = "midori";
@@ -66,29 +69,27 @@ public class COPRecipeProvider extends RecipeProvider {
 
     @Override
     protected void buildRecipes(@NotNull Consumer<FinishedRecipe> consumer) {
-        for (var woodMaterial : WoodMaterial.WOOD_MATERIALS) {
+        for (var woodType : WOOD_PROPERTIES.keySet()) {
+            String materialName = woodType.name().replace(BOPAPI.MOD_ID + ":", "");
             Function<String, Item> getItem = name -> ForgeRegistries.ITEMS.getValue(CompatOPlenty.bopLoc(name));
-            String woodName = woodMaterial.getName();
-            Item slab = getItem.apply(woodName + "_slab");
-            Item planks = getItem.apply(woodName + "_planks");
-            Item leaves = getItem.apply(woodName + "_leaves");
-            verticalSlabRecipe(slab, VERTICAL_SLABS.get(woodMaterial).get(), consumer);
-            bookshelfRecipe(planks, BOOKSHELVES.get(woodMaterial).get(), consumer);
-            ladderRecipe(getItem.apply(woodName + "_ladder"), LADDERS.get(woodMaterial).get(), consumer);
-            postRecipe(getItem.apply(woodName + "_wood"), POSTS.get(woodMaterial).get(), consumer);
-            postRecipe(getItem.apply("stripped_" + woodName + "_wood"), STRIPPED_POSTS.get(woodMaterial).get(), consumer);
-            hedgeRecipe(logTag(woodName), leaves, HEDGES.get(woodMaterial).get(), consumer);
-            leafCarpetRecipe(leaves, LEAF_CARPETS.get(woodMaterial).get(), consumer);
-            leafPileRecipe(leaves, LEAF_PILES.get(woodMaterial).get(), consumer);
-            chestRecipes(planks, logTag(woodName), CHESTS.get(woodMaterial), TRAPPED_CHESTS.get(woodMaterial), consumer);
-            beehiveRecipe(planks, BEEHIVES.get(woodMaterial).get(), consumer);
-            verticalPlankRecipe(planks, VERTICAL_PLANKS.get(woodMaterial).get(), consumer);
-            cabinetRecipe(slab, getItem.apply(woodName + "_trapdoor"), CABINETS.get(woodMaterial).get(), consumer);
-            tableRecipe(slab, getItem.apply(woodName + "_fence"), TABLES.get(woodMaterial).get(), consumer);
-            boardsRecipe(planks, BOARDS.get(woodMaterial).get(), consumer);
-
-            furnaceBoatRecipe(getItem.apply(woodName + "_boat"), COPItems.FURNACE_BOATS.get(woodMaterial).get(), consumer);
-            largeBoatRecipe(getItem.apply(woodName + "_boat"), planks, COPItems.LARGE_BOATS.get(woodMaterial).get(), consumer);
+            Item slab = getItem.apply(materialName + "_slab");
+            Item planks = getItem.apply(materialName + "_planks");
+            Item leaves = getItem.apply(materialName + "_leaves");
+            verticalSlabRecipe(slab, VERTICAL_SLABS.get(woodType).get(), consumer);
+            bookshelfRecipe(planks, BOOKSHELVES.get(woodType).get(), consumer);
+            ladderRecipe(getItem.apply(materialName + "_ladder"), LADDERS.get(woodType).get(), consumer);
+            postRecipe(getItem.apply(materialName + "_wood"), POSTS.get(woodType).get(), consumer);
+            postRecipe(getItem.apply("stripped_" + materialName + "_wood"), STRIPPED_POSTS.get(woodType).get(), consumer);
+            hedgeRecipe(logTag(materialName), leaves, HEDGES.get(woodType).get(), consumer);
+            leafCarpetRecipe(leaves, LEAF_CARPETS.get(woodType).get(), consumer);
+            leafPileRecipe(leaves, LEAF_PILES.get(woodType).get(), consumer);
+            chestRecipes(planks, logTag(materialName), CHESTS.get(woodType), TRAPPED_CHESTS.get(woodType), consumer);
+            beehiveRecipe(planks, BEEHIVES.get(woodType).get(), consumer);
+            verticalPlankRecipe(planks, VERTICAL_PLANKS.get(woodType).get(), consumer);
+            cabinetRecipe(slab, getItem.apply(materialName + "_trapdoor"), CABINETS.get(woodType).get(), consumer);
+            tableRecipe(slab, getItem.apply(materialName + "_fence"), TABLES.get(woodType).get(), consumer);
+            boardsRecipe(planks, BOARDS.get(woodType).get(), consumer);
+            BoatloadRecipeProvider.boatRecipes(consumer, COPBoatTypes.BOAT_TYPES.get(woodType));
         }
 
         //Vertical Slabs
@@ -113,25 +114,31 @@ public class COPRecipeProvider extends RecipeProvider {
         verticalSlabRecipe(GALANOS_SLAB.get(), GALANOS_VERTICAL_SLAB.get(), consumer);
 
         //Hedges
+        hedgeRecipe(ItemTags.OAK_LOGS, BOPBlocks.ORIGIN_LEAVES, ORIGIN_HEDGE.get(), consumer);
         hedgeRecipe(ItemTags.OAK_LOGS, BOPBlocks.FLOWERING_OAK_LEAVES, FLOWERING_OAK_HEDGE.get(), consumer);
         hedgeRecipe(ItemTags.BIRCH_LOGS, BOPBlocks.RAINBOW_BIRCH_LEAVES, RAINBOW_BIRCH_HEDGE.get(), consumer);
-        hedgeRecipe(ItemTags.OAK_LOGS, BOPBlocks.ORIGIN_LEAVES, ORIGIN_HEDGE.get(), consumer);
-        hedgeRecipe(ItemTags.OAK_LOGS, BOPBlocks.RED_MAPLE_LEAVES, RED_MAPLE_HEDGE.get(), consumer);
-        hedgeRecipe(ItemTags.DARK_OAK_LOGS, BOPBlocks.ORANGE_MAPLE_LEAVES, ORANGE_MAPLE_HEDGE.get(), consumer);
-        hedgeRecipe(ItemTags.BIRCH_LOGS, BOPBlocks.YELLOW_MAPLE_LEAVES, YELLOW_MAPLE_HEDGE.get(), consumer);
+        hedgeRecipe(ItemTags.SPRUCE_LOGS, BOPBlocks.CYPRESS_LEAVES, CYPRESS_HEDGE.get(), consumer);
+        hedgeRecipe(ItemTags.CHERRY_LOGS, BOPBlocks.SNOWBLOSSOM_LEAVES, SNOWBLOSSOM_HEDGE.get(), consumer);
+        hedgeRecipe(ModTags.Items.MAPLE_LOGS, BOPBlocks.RED_MAPLE_LEAVES, RED_MAPLE_HEDGE.get(), consumer);
+        hedgeRecipe(ModTags.Items.MAPLE_LOGS, BOPBlocks.ORANGE_MAPLE_LEAVES, ORANGE_MAPLE_HEDGE.get(), consumer);
+        hedgeRecipe(ModTags.Items.MAPLE_LOGS, BOPBlocks.YELLOW_MAPLE_LEAVES, YELLOW_MAPLE_HEDGE.get(), consumer);
 
         //Leaf Carpets
+        leafCarpetRecipe(BOPBlocks.ORIGIN_LEAVES, ORIGIN_LEAF_CARPET.get(), consumer);
         leafCarpetRecipe(BOPBlocks.FLOWERING_OAK_LEAVES, FLOWERING_OAK_LEAF_CARPET.get(), consumer);
         leafCarpetRecipe(BOPBlocks.RAINBOW_BIRCH_LEAVES, RAINBOW_BIRCH_LEAF_CARPET.get(), consumer);
-        leafCarpetRecipe(BOPBlocks.ORIGIN_LEAVES, ORIGIN_LEAF_CARPET.get(), consumer);
+        leafCarpetRecipe(BOPBlocks.CYPRESS_LEAVES, CYPRESS_LEAF_CARPET.get(), consumer);
+        leafCarpetRecipe(BOPBlocks.SNOWBLOSSOM_LEAVES, SNOWBLOSSOM_LEAF_CARPET.get(), consumer);
         leafCarpetRecipe(BOPBlocks.RED_MAPLE_LEAVES, RED_MAPLE_LEAF_CARPET.get(), consumer);
         leafCarpetRecipe(BOPBlocks.ORANGE_MAPLE_LEAVES, ORANGE_MAPLE_LEAF_CARPET.get(), consumer);
         leafCarpetRecipe(BOPBlocks.YELLOW_MAPLE_LEAVES, YELLOW_MAPLE_LEAF_CARPET.get(), consumer);
 
         //Leaf Piles
+        leafPileRecipe(BOPBlocks.ORIGIN_LEAVES, ORIGIN_LEAF_PILE.get(), consumer);
         leafPileRecipe(BOPBlocks.FLOWERING_OAK_LEAVES, FLOWERING_OAK_LEAF_PILE.get(), consumer);
         leafPileRecipe(BOPBlocks.RAINBOW_BIRCH_LEAVES, RAINBOW_BIRCH_LEAF_PILE.get(), consumer);
-        leafPileRecipe(BOPBlocks.ORIGIN_LEAVES, ORIGIN_LEAF_PILE.get(), consumer);
+        leafPileRecipe(BOPBlocks.CYPRESS_LEAVES, CYPRESS_LEAF_PILE.get(), consumer);
+        leafPileRecipe(BOPBlocks.SNOWBLOSSOM_LEAVES, SNOWBLOSSOM_LEAF_PILE.get(), consumer);
         leafPileRecipe(BOPBlocks.RED_MAPLE_LEAVES, RED_MAPLE_LEAF_PILE.get(), consumer);
         leafPileRecipe(BOPBlocks.ORANGE_MAPLE_LEAVES, ORANGE_MAPLE_LEAF_PILE.get(), consumer);
         leafPileRecipe(BOPBlocks.YELLOW_MAPLE_LEAVES, YELLOW_MAPLE_LEAF_PILE.get(), consumer);
@@ -304,31 +311,31 @@ public class COPRecipeProvider extends RecipeProvider {
     public static void verticalSlabRecipe(ItemLike slab, ItemLike verticalSlab, Consumer<FinishedRecipe> consumer) {
         ConditionalRecipe.builder()
                 .addCondition(quarkCondition(VERTICAL_SLABS_FLAG))
-                .addRecipe(consumer1 -> ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, verticalSlab, 3).define('S', slab).pattern("S").pattern("S").pattern("S").unlockedBy(getHasName(slab), has(slab)).save(consumer1, CompatOPlenty.modLoc(getItemName(verticalSlab))))
+                .addRecipe(consumer1 -> ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, verticalSlab, 3).define('S', slab).pattern("S").pattern("S").pattern("S").unlockedBy(getHasName(slab), has(slab)).save(consumer1, CompatOPlenty.modLoc(getItemName(verticalSlab))))
                 .build(consumer, CompatOPlenty.modLoc("crafting/" + getItemName(verticalSlab)));
 
         ConditionalRecipe.builder()
                 .addCondition(quarkCondition(VERTICAL_SLABS_FLAG))
-                .addRecipe(consumer1 -> ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, slab).requires(verticalSlab).unlockedBy(getHasName(verticalSlab), has(verticalSlab)).save(consumer1, CompatOPlenty.modLoc(getItemName(verticalSlab) + "_revert")))
+                .addRecipe(consumer1 -> ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, slab).requires(verticalSlab).unlockedBy(getHasName(verticalSlab), has(verticalSlab)).save(consumer1, CompatOPlenty.modLoc(getItemName(verticalSlab) + "_revert")))
                 .build(consumer, CompatOPlenty.modLoc("crafting/" + getItemName(verticalSlab) + "_revert"));
     }
 
     public static void verticalPlankRecipe(ItemLike plank, ItemLike verticalPlank, Consumer<FinishedRecipe> consumer) {
         ConditionalRecipe.builder()
                 .addCondition(quarkCondition(VERTICAL_PLANKS_FLAG))
-                .addRecipe(consumer1 -> ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, verticalPlank, 3).define('S', plank).pattern("S").pattern("S").pattern("S").unlockedBy(getHasName(plank), has(plank)).save(consumer1, CompatOPlenty.modLoc(getItemName(verticalPlank))))
+                .addRecipe(consumer1 -> ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, verticalPlank, 3).define('S', plank).pattern("S").pattern("S").pattern("S").unlockedBy(getHasName(plank), has(plank)).save(consumer1, CompatOPlenty.modLoc(getItemName(verticalPlank))))
                 .build(consumer, CompatOPlenty.modLoc("crafting/" + getItemName(verticalPlank)));
 
         ConditionalRecipe.builder()
                 .addCondition(quarkCondition(VERTICAL_PLANKS_FLAG))
-                .addRecipe(consumer1 -> ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, plank).requires(verticalPlank).unlockedBy(getHasName(verticalPlank), has(verticalPlank)).save(consumer1, CompatOPlenty.modLoc(getItemName(verticalPlank) + "_revert")))
+                .addRecipe(consumer1 -> ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, plank).requires(verticalPlank).unlockedBy(getHasName(verticalPlank), has(verticalPlank)).save(consumer1, CompatOPlenty.modLoc(getItemName(verticalPlank) + "_revert")))
                 .build(consumer, CompatOPlenty.modLoc("crafting/" + getItemName(verticalPlank) + "_revert"));
     }
 
     public static void boardsRecipe(ItemLike plank, ItemLike board, Consumer<FinishedRecipe> consumer) {
         ConditionalRecipe.builder()
                 .addCondition(new BlueprintAndCondition(List.of(new ModLoadedCondition(CompatOPlenty.WOODWORKS_ID), new ConfigValueCondition(new ResourceLocation(CompatOPlenty.WOODWORKS_ID, "config"), WoodworksConfig.COMMON.woodenBoards, "wooden_boards", new HashMap<>(), false))))
-                .addRecipe(consumer1 -> ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, board, 3).define('S', plank).pattern("S").pattern("S").pattern("S").unlockedBy(getHasName(plank), has(plank)).save(consumer1, CompatOPlenty.modLoc(getItemName(board))))
+                .addRecipe(consumer1 -> ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, board, 3).define('S', plank).pattern("S").pattern("S").pattern("S").unlockedBy(getHasName(plank), has(plank)).save(consumer1, CompatOPlenty.modLoc(getItemName(board))))
                 .build(consumer, CompatOPlenty.modLoc("crafting/" + getItemName(board)));
     }
 
@@ -439,20 +446,6 @@ public class COPRecipeProvider extends RecipeProvider {
                 .build(consumer, CompatOPlenty.modLoc("crafting/" + getItemName(cabinet)));
     }
 
-    public static void furnaceBoatRecipe(ItemLike boat, ItemLike furnaceBoat, Consumer<FinishedRecipe> consumer) {
-        ConditionalRecipe.builder()
-                .addCondition(new ModLoadedCondition(CompatOPlenty.BOATLOAD_ID))
-                .addRecipe(consumer1 -> ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, furnaceBoat, 1).group("furnace_boat").define('F', Items.FURNACE).define('B', boat).pattern("F").pattern("B").unlockedBy(getHasName(boat), has(boat)).save(consumer1))
-                .build(consumer, CompatOPlenty.modLoc("crafting/" + getItemName(furnaceBoat)));
-    }
-
-    public static void largeBoatRecipe(ItemLike boat, ItemLike planks, ItemLike largeBoat, Consumer<FinishedRecipe> consumer) {
-        ConditionalRecipe.builder()
-                .addCondition(new ModLoadedCondition(CompatOPlenty.BOATLOAD_ID))
-                .addRecipe(consumer1 -> ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, largeBoat, 1).group("large_boat").define('B', boat).define('P', planks).pattern("PBP").pattern("PPP").unlockedBy(getHasName(boat), has(boat)).save(consumer1))
-                .build(consumer, CompatOPlenty.modLoc("crafting/" + getItemName(largeBoat)));
-    }
-
     public static void sandstoneStairsRecipe(ItemLike material, ItemLike stairs, Consumer<FinishedRecipe> consumer) {
         ConditionalRecipe.builder()
                 .addCondition(quarkCondition(SANDSTONE_BRICKS_FLAG))
@@ -478,14 +471,14 @@ public class COPRecipeProvider extends RecipeProvider {
     public static void sandstoneSlabRecipe(ItemLike material, ItemLike slab, Consumer<FinishedRecipe> consumer) {
         ConditionalRecipe.builder()
                 .addCondition(quarkCondition(SANDSTONE_BRICKS_FLAG))
-                .addRecipe(consumer1 -> slabBuilder(RecipeCategory.DECORATIONS, slab, of(material)).unlockedBy(getHasName(material), has(material)).save(consumer1))
+                .addRecipe(consumer1 -> slabBuilder(RecipeCategory.BUILDING_BLOCKS, slab, of(material)).unlockedBy(getHasName(material), has(material)).save(consumer1))
                 .build(consumer, CompatOPlenty.modLoc("crafting/" + getItemName(slab)));
     }
 
     public static void galanosSlabRecipe(ItemLike material, ItemLike slab, Consumer<FinishedRecipe> consumer) {
         ConditionalRecipe.builder()
                 .addCondition(quarkCondition(MIDORI_FLAG))
-                .addRecipe(consumer1 -> slabBuilder(RecipeCategory.DECORATIONS, slab, of(material)).unlockedBy(getHasName(material), has(material)).save(consumer1))
+                .addRecipe(consumer1 -> slabBuilder(RecipeCategory.BUILDING_BLOCKS, slab, of(material)).unlockedBy(getHasName(material), has(material)).save(consumer1))
                 .build(consumer, CompatOPlenty.modLoc("crafting/" + getItemName(slab)));
 
     }
@@ -493,7 +486,7 @@ public class COPRecipeProvider extends RecipeProvider {
     public static void polishedRoseSlabRecipe(ItemLike material, ItemLike slab, Consumer<FinishedRecipe> consumer) {
         ConditionalRecipe.builder()
                 .addCondition(new ModLoadedCondition(CompatOPlenty.TWIGS_ID))
-                .addRecipe(consumer1 -> slabBuilder(RecipeCategory.DECORATIONS, slab, of(material)).unlockedBy(getHasName(material), has(material)).save(consumer1))
+                .addRecipe(consumer1 -> slabBuilder(RecipeCategory.BUILDING_BLOCKS, slab, of(material)).unlockedBy(getHasName(material), has(material)).save(consumer1))
                 .build(consumer, CompatOPlenty.modLoc("crafting/" + getItemName(slab)));
     }
 
@@ -515,14 +508,14 @@ public class COPRecipeProvider extends RecipeProvider {
     public static void polishedRoseRecipe(Consumer<FinishedRecipe> consumer) {
         ConditionalRecipe.builder()
                 .addCondition(new ModLoadedCondition(CompatOPlenty.TWIGS_ID))
-                .addRecipe(consumer1 -> ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, POLISHED_ROSE_QUARTZ.get()).define('#', BOPBlocks.ROSE_QUARTZ_BLOCK).pattern("##").pattern("##").unlockedBy(getHasName(BOPBlocks.ROSE_QUARTZ_BLOCK), has(BOPBlocks.ROSE_QUARTZ_BLOCK)).save(consumer1))
+                .addRecipe(consumer1 -> ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, POLISHED_ROSE_QUARTZ.get()).define('#', BOPBlocks.ROSE_QUARTZ_BLOCK).pattern("##").pattern("##").unlockedBy(getHasName(BOPBlocks.ROSE_QUARTZ_BLOCK), has(BOPBlocks.ROSE_QUARTZ_BLOCK)).save(consumer1))
                 .build(consumer, CompatOPlenty.modLoc("crafting/" + getItemName(POLISHED_ROSE_QUARTZ.get())));
     }
 
     public static void galanosRecipe(Consumer<FinishedRecipe> consumer) {
         ConditionalRecipe.builder()
                 .addCondition(quarkCondition(MIDORI_FLAG))
-                .addRecipe(consumer1 -> ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, GALANOS_BLOCK.get()).define('#', COPItems.GLOWING_MOSS_PASTE.get()).pattern("##").pattern("##").unlockedBy(getHasName(COPItems.GLOWING_MOSS_PASTE.get()), has(COPItems.GLOWING_MOSS_PASTE.get())).save(consumer1))
+                .addRecipe(consumer1 -> ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, GALANOS_BLOCK.get()).define('#', COPItems.GLOWING_MOSS_PASTE.get()).pattern("##").pattern("##").unlockedBy(getHasName(COPItems.GLOWING_MOSS_PASTE.get()), has(COPItems.GLOWING_MOSS_PASTE.get())).save(consumer1))
                 .build(consumer, CompatOPlenty.modLoc("crafting/" + getItemName(GALANOS_BLOCK.get())));
     }
 
@@ -536,21 +529,21 @@ public class COPRecipeProvider extends RecipeProvider {
     public static void chiseledBlockRecipe(ItemLike slab, ItemLike result, String modId, Consumer<FinishedRecipe> consumer) {
         ConditionalRecipe.builder()
                 .addCondition(new ModLoadedCondition(modId))
-                .addRecipe(consumer1 -> ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, result).define('#', slab).pattern("#").pattern("#").unlockedBy(getHasName(slab), has(slab)).save(consumer1))
+                .addRecipe(consumer1 -> ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, result).define('#', slab).pattern("#").pattern("#").unlockedBy(getHasName(slab), has(slab)).save(consumer1))
                 .build(consumer, CompatOPlenty.modLoc("crafting/" + getItemName(result)));
     }
 
     public static void quarkFlagStoneCutterRecipe(ItemLike material, ItemLike result, int amount, String flag, Consumer<FinishedRecipe> consumer) {
         ConditionalRecipe.builder()
                 .addCondition(quarkCondition(flag))
-                .addRecipe(consumer1 -> SingleItemRecipeBuilder.stonecutting(of(material), RecipeCategory.DECORATIONS, result, amount).unlockedBy(getHasName(material), has(material)).save(consumer1))
+                .addRecipe(consumer1 -> SingleItemRecipeBuilder.stonecutting(of(material), RecipeCategory.BUILDING_BLOCKS, result, amount).unlockedBy(getHasName(material), has(material)).save(consumer1))
                 .build(consumer, CompatOPlenty.modLoc("stonecutting/" + getConversionRecipeName(result, material)));
     }
 
     public static void modLoadedStoneCutterRecipe(ItemLike material, ItemLike result, int amount, String modId, Consumer<FinishedRecipe> consumer) {
         ConditionalRecipe.builder()
                 .addCondition(new ModLoadedCondition(modId))
-                .addRecipe(consumer1 -> SingleItemRecipeBuilder.stonecutting(of(material), RecipeCategory.DECORATIONS, result, amount).unlockedBy(getHasName(material), has(material)).save(consumer1))
+                .addRecipe(consumer1 -> SingleItemRecipeBuilder.stonecutting(of(material), RecipeCategory.BUILDING_BLOCKS, result, amount).unlockedBy(getHasName(material), has(material)).save(consumer1))
                 .build(consumer, CompatOPlenty.modLoc("stonecutting/" + getConversionRecipeName(result, material)));
     }
 
@@ -558,21 +551,21 @@ public class COPRecipeProvider extends RecipeProvider {
         ConditionalRecipe.builder()
                 .addCondition(new ModLoadedCondition(modId))
                 .addCondition(quarkCondition(flag))
-                .addRecipe(consumer1 -> SingleItemRecipeBuilder.stonecutting(of(material), RecipeCategory.DECORATIONS, result, amount).unlockedBy(getHasName(material), has(material)).save(consumer1))
+                .addRecipe(consumer1 -> SingleItemRecipeBuilder.stonecutting(of(material), RecipeCategory.BUILDING_BLOCKS, result, amount).unlockedBy(getHasName(material), has(material)).save(consumer1))
                 .build(consumer, CompatOPlenty.modLoc("stonecutting/" + getConversionRecipeName(result, material)));
     }
 
     public static void flaggedFurnaceRecipe(ItemLike material, ItemLike result, float exp, String flag, Consumer<FinishedRecipe> consumer) {
         ConditionalRecipe.builder()
                 .addCondition(quarkCondition(flag))
-                .addRecipe(consumer1 -> SimpleCookingRecipeBuilder.smelting(of(material), RecipeCategory.DECORATIONS, result, exp, 200).unlockedBy(getHasName(material), has(material)).save(consumer1))
+                .addRecipe(consumer1 -> SimpleCookingRecipeBuilder.smelting(of(material), RecipeCategory.MISC, result, exp, 200).unlockedBy(getHasName(material), has(material)).save(consumer1))
                 .build(consumer, CompatOPlenty.modLoc("smelting/" + getItemName(result)));
     }
 
     public static void modLoadedFurnaceRecipe(ItemLike material, ItemLike result, float exp, String modId, Consumer<FinishedRecipe> consumer) {
         ConditionalRecipe.builder()
                 .addCondition(new ModLoadedCondition(modId))
-                .addRecipe(consumer1 -> SimpleCookingRecipeBuilder.smelting(of(material), RecipeCategory.DECORATIONS, result, exp, 200).unlockedBy(getHasName(material), has(material)).save(consumer1))
+                .addRecipe(consumer1 -> SimpleCookingRecipeBuilder.smelting(of(material), RecipeCategory.BUILDING_BLOCKS, result, exp, 200).unlockedBy(getHasName(material), has(material)).save(consumer1))
                 .build(consumer, CompatOPlenty.modLoc("smelting/" + getItemName(result)));
     }
 

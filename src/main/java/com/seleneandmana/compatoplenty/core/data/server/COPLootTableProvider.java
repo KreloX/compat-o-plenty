@@ -1,6 +1,5 @@
 package com.seleneandmana.compatoplenty.core.data.server;
 
-import com.seleneandmana.compatoplenty.core.other.WoodMaterial;
 import com.seleneandmana.compatoplenty.core.registry.COPBlocks;
 import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.data.PackOutput;
@@ -40,24 +39,25 @@ public class COPLootTableProvider extends LootTableProvider {
 
         @Override
         protected void generate() {
-            for (var woodMaterial : WoodMaterial.WOOD_MATERIALS) {
-                add(COPBlocks.VERTICAL_SLABS.get(woodMaterial).get(), this::createSlabItemTable);
-                var bookshelf = COPBlocks.BOOKSHELVES.get(woodMaterial).get();
+            for (var woodType : COPBlocks.WOOD_PROPERTIES.keySet()) {
+                add(COPBlocks.VERTICAL_SLABS.get(woodType).get(), this::createSlabItemTable);
+                var bookshelf = COPBlocks.BOOKSHELVES.get(woodType).get();
                 add(bookshelf, createSingleItemTableWithSilkTouch(bookshelf, Items.BOOK, ConstantValue.exactly(3.0F)));
-                dropSelf(COPBlocks.LADDERS.get(woodMaterial).get());
-                dropSelf(COPBlocks.STRIPPED_POSTS.get(woodMaterial).get());
-                dropSelf(COPBlocks.POSTS.get(woodMaterial).get());
-                dropSelf(COPBlocks.HEDGES.get(woodMaterial).get());
-                dropSelf(COPBlocks.LEAF_CARPETS.get(woodMaterial).get());
-                add(COPBlocks.CHESTS.get(woodMaterial).get(), this::createNameableBlockEntityTable);
-                add(COPBlocks.TRAPPED_CHESTS.get(woodMaterial).get(), this::createNameableBlockEntityTable);
-                var beehive = COPBlocks.BEEHIVES.get(woodMaterial).get();
+                dropSelf(COPBlocks.LADDERS.get(woodType).get());
+                dropSelf(COPBlocks.STRIPPED_POSTS.get(woodType).get());
+                dropSelf(COPBlocks.POSTS.get(woodType).get());
+                dropSelf(COPBlocks.HEDGES.get(woodType).get());
+                dropSelf(COPBlocks.LEAF_CARPETS.get(woodType).get());
+                add(COPBlocks.CHESTS.get(woodType).get(), this::createNameableBlockEntityTable);
+                add(COPBlocks.TRAPPED_CHESTS.get(woodType).get(), this::createNameableBlockEntityTable);
+                var beehive = COPBlocks.BEEHIVES.get(woodType).get();
                 add(beehive, createBeeHiveDrop(beehive));
-                dropSelf(COPBlocks.CABINETS.get(woodMaterial).get());
-                dropSelf(COPBlocks.TABLES.get(woodMaterial).get());
-                dropSelf(COPBlocks.VERTICAL_PLANKS.get(woodMaterial).get());
-                dropSelf(COPBlocks.BOARDS.get(woodMaterial).get());
-                add(COPBlocks.LEAF_PILES.get(woodMaterial).get(), this::createLeafPileDrops);
+                dropSelf(COPBlocks.CABINETS.get(woodType).get());
+                dropSelf(COPBlocks.TABLES.get(woodType).get());
+                dropSelf(COPBlocks.HOLLOW_LOGS.get(woodType).get());
+                dropSelf(COPBlocks.VERTICAL_PLANKS.get(woodType).get());
+                dropSelf(COPBlocks.BOARDS.get(woodType).get());
+                add(COPBlocks.LEAF_PILES.get(woodType).get(), this::createLeafPileDrops);
             }
             // Vertical Slabs
             add(COPBlocks.WHITE_SANDSTONE_VERTICAL_SLAB.get(), this::createSlabItemTable);
@@ -77,17 +77,21 @@ public class COPLootTableProvider extends LootTableProvider {
             add(COPBlocks.POLISHED_ROSE_QUARTZ_BRICK_VERTICAL_SLAB.get(), this::createSlabItemTable);
 
             // Hedges
+            dropSelf(COPBlocks.ORIGIN_HEDGE.get());
             dropSelf(COPBlocks.FLOWERING_OAK_HEDGE.get());
             dropSelf(COPBlocks.RAINBOW_BIRCH_HEDGE.get());
-            dropSelf(COPBlocks.ORIGIN_HEDGE.get());
+            dropSelf(COPBlocks.CYPRESS_HEDGE.get());
+            dropSelf(COPBlocks.SNOWBLOSSOM_HEDGE.get());
             dropSelf(COPBlocks.RED_MAPLE_HEDGE.get());
             dropSelf(COPBlocks.YELLOW_MAPLE_HEDGE.get());
             dropSelf(COPBlocks.ORANGE_MAPLE_HEDGE.get());
 
             // Leaf Carpets
+            dropSelf(COPBlocks.ORIGIN_LEAF_CARPET.get());
             dropSelf(COPBlocks.FLOWERING_OAK_LEAF_CARPET.get());
             dropSelf(COPBlocks.RAINBOW_BIRCH_LEAF_CARPET.get());
-            dropSelf(COPBlocks.ORIGIN_LEAF_CARPET.get());
+            dropSelf(COPBlocks.CYPRESS_LEAF_CARPET.get());
+            dropSelf(COPBlocks.SNOWBLOSSOM_LEAF_CARPET.get());
             dropSelf(COPBlocks.RED_MAPLE_LEAF_CARPET.get());
             dropSelf(COPBlocks.YELLOW_MAPLE_LEAF_CARPET.get());
             dropSelf(COPBlocks.ORANGE_MAPLE_LEAF_CARPET.get());
@@ -124,9 +128,11 @@ public class COPLootTableProvider extends LootTableProvider {
             add(COPBlocks.POLISHED_ROSE_QUARTZ_BRICK_SLAB.get(), this::createSlabItemTable);
 
             // Leaf Piles
+            add(COPBlocks.ORIGIN_LEAF_PILE.get(), this::createLeafPileDrops);
             add(COPBlocks.FLOWERING_OAK_LEAF_PILE.get(), this::createLeafPileDrops);
             add(COPBlocks.RAINBOW_BIRCH_LEAF_PILE.get(), this::createLeafPileDrops);
-            add(COPBlocks.ORIGIN_LEAF_PILE.get(), this::createLeafPileDrops);
+            add(COPBlocks.CYPRESS_LEAF_PILE.get(), this::createLeafPileDrops);
+            add(COPBlocks.SNOWBLOSSOM_LEAF_PILE.get(), this::createLeafPileDrops);
             add(COPBlocks.RED_MAPLE_LEAF_PILE.get(), this::createLeafPileDrops);
             add(COPBlocks.ORANGE_MAPLE_LEAF_PILE.get(), this::createLeafPileDrops);
             add(COPBlocks.YELLOW_MAPLE_LEAF_PILE.get(), this::createLeafPileDrops);

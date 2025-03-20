@@ -12,8 +12,8 @@ public class COPQuark {
     private COPQuark() {
     }
 
-    public static Supplier<Block> hollowLog(Block log, boolean flammable) {
-        return () -> new HollowLogBlock(log, null, flammable);
+    public static Supplier<Block> hollowLog(Supplier<Block> log, boolean flammable) {
+        return () -> new HollowLogBlock(log.get(), null, flammable);
     }
 
     public static Supplier<Block> verticalSlab(Supplier<Block> slab, BlockBehaviour.Properties properties) {

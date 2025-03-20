@@ -10,7 +10,7 @@
       ],
       "recipe": {
         "type": "minecraft:crafting_shaped",
-        "category": "misc",
+        "category": "building",
         "key": {
           "#": {
             "item": "compatoplenty:orange_sandstone_bricks"

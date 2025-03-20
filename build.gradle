@@ -23,6 +23,8 @@ println("Java: " + System.getProperty("java.version") + " JVM: " + System.getPro
 minecraft {
     mappings channel: mappings_channel, version: mappings_version
 
+    accessTransformer = file("src/main/resources/META-INF/accesstransformer.cfg")
+
     runs {
         client {
             workingDirectory project.file("run")
@@ -84,12 +86,15 @@ dependencies {
 
     implementation fg.deobf("com.teamabnormals:blueprint:$blueprint_version")
 
+    runtimeOnly fg.deobf("maven.modrinth:every-compat:$every_compat_version")
+    runtimeOnly fg.deobf("maven.modrinth:moonlight:$moonlight_version")
+    compileOnly fg.deobf("maven.modrinth:every-compat:$every_compat_version")
+
     runtimeOnly fg.deobf("com.teamabnormals:boatload:$boatload_version")
     compileOnly fg.deobf("com.teamabnormals:boatload:$boatload_version")
     runtimeOnly fg.deobf("maven.modrinth:woodworks:$woodworks_version")
     compileOnly fg.deobf("maven.modrinth:woodworks:$woodworks_version")
     runtimeOnly fg.deobf("maven.modrinth:clayworks:$clayworks_version")
-    compileOnly fg.deobf("maven.modrinth:clayworks:$clayworks_version")
 
     runtimeOnly fg.deobf("maven.modrinth:quark:$quark_version")
     runtimeOnly fg.deobf("maven.modrinth:zeta:$zeta_version")

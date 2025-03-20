@@ -1,10 +1,9 @@
 package com.seleneandmana.compatoplenty.core.registry.helper;
 
 import com.seleneandmana.compatoplenty.core.CompatOPlenty;
-import com.seleneandmana.compatoplenty.core.other.WoodMaterial;
-import com.seleneandmana.compatoplenty.integrations.farmersdelight.COPCabinets;
+import com.seleneandmana.compatoplenty.integrations.farmersdelight.COPFarmersDelight;
 import com.seleneandmana.compatoplenty.integrations.quark.COPQuark;
-import com.seleneandmana.compatoplenty.integrations.twigs.COPTables;
+import com.seleneandmana.compatoplenty.integrations.twigs.COPTwigs;
 import com.teamabnormals.blueprint.client.BlueprintChestMaterials;
 import com.teamabnormals.blueprint.client.renderer.block.ChestBlockEntityWithoutLevelRenderer;
 import com.teamabnormals.blueprint.common.block.chest.BlueprintChestBlock;
@@ -19,6 +18,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -31,16 +31,22 @@ public class COPBlockSubRegistryHelper extends BlockSubRegistryHelper {
         super(parent);
     }
 
-    public RegistryObject<Block> createCabinetBlock(WoodMaterial woodMaterial) {
-        return createFuelBlock(woodMaterial.getName() + "_cabinet", areModsLoaded(CompatOPlenty.FARMERS_DELIGHT_ID)
-                ? COPCabinets.cabinet(Properties.copy(Blocks.BARREL))
-                : () -> new Block(Properties.copy(Blocks.BARREL)), woodMaterial.getBurnTime());
+    public RegistryObject<Block> createCabinetBlock(String materialName, int burnTime) {
+        return createFuelBlock(materialName + "_cabinet", areModsLoaded(CompatOPlenty.FARMERS_DELIGHT_ID)
+                ? COPFarmersDelight.cabinet(Properties.copy(Blocks.BARREL))
+                : () -> new Block(Properties.copy(Blocks.BARREL)), burnTime);
     }
 
-    public RegistryObject<Block> createTableBlock(WoodMaterial woodMaterial) {
-        return createBlock(woodMaterial.getName() + "_table", areModsLoaded(CompatOPlenty.TWIGS_ID)
-                ? COPTables.table(woodMaterial.getProperties().planks())
-                : () -> new Block(woodMaterial.getProperties().planks()));
+    public RegistryObject<Block> createTableBlock(String materialName, Properties properties) {
+        return createBlock(materialName + "_table", areModsLoaded(CompatOPlenty.TWIGS_ID)
+                ? COPTwigs.table(properties)
+                : () -> new Block(properties));
+    }
+
+    public RegistryObject<Block> createHollowLogBlock(String materialName, Supplier<Block> log, Properties properties) {
+        return createFuelBlock("hollow_" + materialName + "_log", areModsLoaded(CompatOPlenty.QUARK_ID)
+                ? COPQuark.hollowLog(log, true)
+                : () -> new Block(properties), properties.ignitedByLava ? 300 : -1);
     }
 
     public RegistryObject<Block> createVerticalSlabBlock(String name, Supplier<Block> slab, Properties properties) {
@@ -49,16 +55,16 @@ public class COPBlockSubRegistryHelper extends BlockSubRegistryHelper {
                 : () -> new Block(properties));
     }
 
-    public RegistryObject<Block> createWoodVerticalSlabBlock(WoodMaterial woodMaterial) {
-        return createFuelBlock(woodMaterial.getName() + "_vertical_slab", areModsLoaded(CompatOPlenty.QUARK_ID)
-                ? COPQuark.verticalSlab(CompatOPlenty.bopBlock(woodMaterial.getName() + "_slab"), woodMaterial.getProperties().planks())
-                : () -> new Block(woodMaterial.getProperties().planks()), woodMaterial.getBurnTime());
+    public RegistryObject<Block> createWoodVerticalSlabBlock(String materialName, Properties properties) {
+        return createFuelBlock(materialName + "_vertical_slab", areModsLoaded(CompatOPlenty.QUARK_ID)
+                ? COPQuark.verticalSlab(CompatOPlenty.bopBlock(materialName + "_slab"), properties)
+                : () -> new Block(properties), properties.ignitedByLava ? 150 : -1);
     }
 
-    public RegistryObject<Block> createWoodPostBlock(String prefix, WoodMaterial woodMaterial) {
-        return createFuelBlock(prefix + woodMaterial.getName() + "_post", areModsLoaded(CompatOPlenty.QUARK_ID)
-                ? COPQuark.woodPost(CompatOPlenty.bopBlock(woodMaterial.getName() + "_fence").get(), woodMaterial.getProperties().sound())
-                : () -> new Block(woodMaterial.getProperties().post()), woodMaterial.getBurnTime());
+    public RegistryObject<Block> createWoodPostBlock(String prefix, String materialName, Block fence, SoundType sound, int burnTime) {
+        return createFuelBlock(prefix + materialName + "_post", areModsLoaded(CompatOPlenty.QUARK_ID)
+                ? COPQuark.woodPost(fence, sound)
+                : () -> new Block(Properties.copy(fence)), burnTime);
     }
 
     public RegistryObject<Block> createHedgeBlock(String name, Supplier<Block> fence, Supplier<Block> leaves, int burnTime) {
@@ -73,26 +79,27 @@ public class COPBlockSubRegistryHelper extends BlockSubRegistryHelper {
                 : () -> new Block(Properties.copy(Blocks.OAK_LEAVES)));
     }
 
-    public RegistryObject<Block> createLeafCarpetBlock(WoodMaterial woodMaterial) {
-        return createLeafCarpetBlock(woodMaterial.getName() + "_leaf_carpet",
-                CompatOPlenty.bopBlock(woodMaterial.getName() + "_leaves"));
+    public RegistryObject<Block> createLeafCarpetBlock(String materialName) {
+        return createLeafCarpetBlock(materialName + "_leaf_carpet", CompatOPlenty.bopBlock(materialName + "_leaves"));
     }
 
-    public RegistryObject<BlueprintChestBlock> createChestBlock(WoodMaterial woodMaterial) {
-        String name = woodMaterial.getName() + "_chest";
+    @Override
+    public RegistryObject<BlueprintChestBlock> createChestBlock(String materialName, Properties properties) {
+        String name = materialName + "_chest";
         String modId = parent.getModId();
-        String chestMaterialsName = BlueprintChestMaterials.registerMaterials(modId, woodMaterial.getName(), false);
-        var block = deferredRegister.register(name, () -> new BlueprintChestBlock(chestMaterialsName, woodMaterial.getProperties().chest()));
-        itemRegister.register(name, () -> new BEWLRFuelBlockItem(block.get(), new Item.Properties(), () -> () -> chestBEWLR(false), woodMaterial.getBurnTime()));
+        String chestMaterialsName = BlueprintChestMaterials.registerMaterials(modId, materialName, false);
+        var block = deferredRegister.register(name, () -> new BlueprintChestBlock(chestMaterialsName, properties));
+        itemRegister.register(name, () -> new BEWLRFuelBlockItem(block.get(), new Item.Properties(), () -> () -> chestBEWLR(false), properties.ignitedByLava ? 300 : -1));
         return block;
     }
 
-    public RegistryObject<BlueprintTrappedChestBlock> createTrappedChestBlock(WoodMaterial woodMaterial) {
-        String name = "trapped_" + woodMaterial.getName() + "_chest";
+    @Override
+    public RegistryObject<BlueprintTrappedChestBlock> createTrappedChestBlockNamed(String materialName, Properties properties) {
+        String name = "trapped_" + materialName + "_chest";
         String modId = parent.getModId();
-        BlueprintChestMaterials.registerMaterials(modId, woodMaterial.getName(), true);
-        var block = deferredRegister.register(name, () -> new BlueprintTrappedChestBlock(modId + ":" + woodMaterial.getName() + "_trapped", woodMaterial.getProperties().chest()));
-        itemRegister.register(name, () -> new BEWLRFuelBlockItem(block.get(), new Item.Properties(), () -> () -> chestBEWLR(true), woodMaterial.getBurnTime()));
+        BlueprintChestMaterials.registerMaterials(modId, materialName, true);
+        var block = deferredRegister.register(name, () -> new BlueprintTrappedChestBlock(modId + ":" + materialName + "_trapped", properties));
+        itemRegister.register(name, () -> new BEWLRFuelBlockItem(block.get(), new Item.Properties(), () -> () -> chestBEWLR(true), properties.ignitedByLava ? 300 : -1));
         return block;
     }
 

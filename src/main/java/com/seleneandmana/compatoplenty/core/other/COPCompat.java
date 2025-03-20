@@ -14,18 +14,22 @@ public class COPCompat {
     }
 
     public static void registerFlammables() {
-        for (var woodMaterial : WoodMaterial.WOOD_MATERIALS) {
-            DataUtil.registerFlammable(LEAF_CARPETS.get(woodMaterial).get(), 30, 60);
-            DataUtil.registerFlammable(HEDGES.get(woodMaterial).get(), 5, 20);
-            DataUtil.registerFlammable(POSTS.get(woodMaterial).get(), 5, 20);
-            DataUtil.registerFlammable(STRIPPED_POSTS.get(woodMaterial).get(), 5, 20);
-            DataUtil.registerFlammable(VERTICAL_SLABS.get(woodMaterial).get(), 5, 20);
-            DataUtil.registerFlammable(VERTICAL_PLANKS.get(woodMaterial).get(), 5, 20);
-            DataUtil.registerFlammable(BEEHIVES.get(woodMaterial).get(), 5, 20);
-            DataUtil.registerFlammable(BOOKSHELVES.get(woodMaterial).get(), 30, 20);
-            DataUtil.registerFlammable(TABLES.get(woodMaterial).get(), 5, 20);
-            DataUtil.registerFlammable(BOARDS.get(woodMaterial).get(), 5, 20);
-            DataUtil.registerFlammable(LEAF_PILES.get(woodMaterial).get(), 30, 60);
+        for (var entry : WOOD_PROPERTIES.entrySet()) {
+            var woodType = entry.getKey();
+            var properties = entry.getValue();
+            if (properties.planks().ignitedByLava) {
+                DataUtil.registerFlammable(LEAF_CARPETS.get(woodType).get(), 30, 60);
+                DataUtil.registerFlammable(HEDGES.get(woodType).get(), 5, 20);
+                DataUtil.registerFlammable(POSTS.get(woodType).get(), 5, 20);
+                DataUtil.registerFlammable(STRIPPED_POSTS.get(woodType).get(), 5, 20);
+                DataUtil.registerFlammable(VERTICAL_SLABS.get(woodType).get(), 5, 20);
+                DataUtil.registerFlammable(VERTICAL_PLANKS.get(woodType).get(), 5, 20);
+                DataUtil.registerFlammable(BEEHIVES.get(woodType).get(), 5, 20);
+                DataUtil.registerFlammable(BOOKSHELVES.get(woodType).get(), 30, 20);
+                DataUtil.registerFlammable(TABLES.get(woodType).get(), 5, 20);
+                DataUtil.registerFlammable(BOARDS.get(woodType).get(), 5, 20);
+                DataUtil.registerFlammable(LEAF_PILES.get(woodType).get(), 30, 60);
+            }
         }
         DataUtil.registerFlammable(RAINBOW_BIRCH_LEAF_CARPET.get(), 30, 60);
         DataUtil.registerFlammable(ORANGE_MAPLE_LEAF_CARPET.get(), 30, 60);
@@ -50,9 +54,9 @@ public class COPCompat {
     }
 
     public static void registerCompostables() {
-        for (var woodMaterial : WoodMaterial.WOOD_MATERIALS) {
-            DataUtil.registerCompostable(LEAF_CARPETS.get(woodMaterial).get(), 0.3f);
-            DataUtil.registerCompostable(HEDGES.get(woodMaterial).get(), 0.3f);
+        for (var woodType : WOOD_PROPERTIES.keySet()) {
+            DataUtil.registerCompostable(LEAF_CARPETS.get(woodType).get(), 0.3f);
+            DataUtil.registerCompostable(HEDGES.get(woodType).get(), 0.3f);
         }
         DataUtil.registerCompostable(RAINBOW_BIRCH_LEAF_CARPET.get(), 0.3f);
         DataUtil.registerCompostable(ORANGE_MAPLE_LEAF_CARPET.get(), 0.3f);

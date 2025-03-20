@@ -1,35 +1,38 @@
 package com.seleneandmana.compatoplenty.integrations.boatload;
 
-import com.google.common.collect.ImmutableMap;
+import biomesoplenty.api.BOPAPI;
+import biomesoplenty.api.block.BOPWoodTypes;
 import com.seleneandmana.compatoplenty.core.CompatOPlenty;
-import com.seleneandmana.compatoplenty.core.other.WoodMaterial;
+import com.seleneandmana.compatoplenty.core.registry.COPBlocks;
 import com.seleneandmana.compatoplenty.core.registry.COPItems;
 import com.teamabnormals.boatload.common.item.FurnaceBoatItem;
 import com.teamabnormals.boatload.common.item.LargeBoatItem;
 import com.teamabnormals.boatload.core.api.BoatloadBoatType;
 import net.minecraft.Util;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.state.properties.WoodType;
 
+import java.util.HashMap;
 import java.util.function.Supplier;
 
 public class COPBoatTypes {
     private COPBoatTypes() {
     }
 
-    public static final ImmutableMap<String, BoatloadBoatType> BOAT_TYPES = Util.make(new ImmutableMap.Builder<String, BoatloadBoatType>(), builder -> {
-        for (var woodMaterial : WoodMaterial.WOOD_MATERIALS) {
-            String name = woodMaterial.getName();
-            builder.put(name, BoatloadBoatType.register(BoatloadBoatType.create(CompatOPlenty.modLoc(name),
-                    CompatOPlenty.bopItem(name + "_planks"), CompatOPlenty.bopItem(name + "_boat"), CompatOPlenty.bopItem(name + "_chest_boat"),
-                    COPItems.FURNACE_BOATS.get(woodMaterial), COPItems.LARGE_BOATS.get(woodMaterial))));
+    public static final HashMap<WoodType, BoatloadBoatType> BOAT_TYPES = Util.make(new HashMap<>(), builder -> {
+        for (var woodType : COPBlocks.WOOD_PROPERTIES.keySet()) {
+            String materialName = woodType.name().replace(BOPAPI.MOD_ID + ":", "");
+            builder.put(woodType, BoatloadBoatType.register(BoatloadBoatType.create(CompatOPlenty.modLoc(materialName),
+                    CompatOPlenty.bopItem(materialName + "_planks"), CompatOPlenty.bopItem(materialName + "_boat"), CompatOPlenty.bopItem(materialName + "_chest_boat"),
+                    () -> COPItems.FURNACE_BOATS.get(woodType).get(), () -> COPItems.LARGE_BOATS.get(woodType).get(), woodType == BOPWoodTypes.HELLBARK, false)));
         }
-    }).build();
+    });
 
-    public static Supplier<Item> furnaceBoat(String materialName) {
-        return () -> new FurnaceBoatItem(BOAT_TYPES.get(materialName));
+    public static Supplier<Item> furnaceBoat(WoodType woodType) {
+        return () -> new FurnaceBoatItem(BOAT_TYPES.get(woodType));
     }
 
-    public static Supplier<Item> largeBoat(String materialName) {
-        return () -> new LargeBoatItem(BOAT_TYPES.get(materialName));
+    public static Supplier<Item> largeBoat(WoodType woodType) {
+        return () -> new LargeBoatItem(BOAT_TYPES.get(woodType));
     }
 }

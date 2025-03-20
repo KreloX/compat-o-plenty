@@ -1,0 +1,8 @@
+{
+  "parent": "quark:block/hollow_log",
+  "textures": {
+    "end": "biomesoplenty:block/dead_log_top",
+    "inside": "biomesoplenty:block/stripped_dead_log",
+    "side": "biomesoplenty:block/dead_log"
+  }
+}

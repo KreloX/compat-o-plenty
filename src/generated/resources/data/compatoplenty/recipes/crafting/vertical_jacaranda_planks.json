@@ -10,7 +10,7 @@
       ],
       "recipe": {
         "type": "minecraft:crafting_shaped",
-        "category": "misc",
+        "category": "building",
         "key": {
           "S": {
             "item": "biomesoplenty:jacaranda_planks"

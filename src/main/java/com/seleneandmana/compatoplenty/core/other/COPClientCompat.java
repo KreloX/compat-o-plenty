@@ -15,14 +15,14 @@ public class COPClientCompat {
     }
 
     private static void registerRenderLayers() {
-        for (var woodMaterial : WoodMaterial.WOOD_MATERIALS) {
-            setRenderLayer(LADDERS.get(woodMaterial).get(), RenderType.cutout());
-            setRenderLayer(POSTS.get(woodMaterial).get(), RenderType.cutout());
-            setRenderLayer(STRIPPED_POSTS.get(woodMaterial).get(), RenderType.cutout());
-            setRenderLayer(HEDGES.get(woodMaterial).get(), RenderType.cutout());
-            setRenderLayer(LEAF_CARPETS.get(woodMaterial).get(), RenderType.cutout());
-            setRenderLayer(LEAF_PILES.get(woodMaterial).get(), RenderType.cutout());
-            setRenderLayer(TABLES.get(woodMaterial).get(), RenderType.cutout());
+        for (var woodType : WOOD_PROPERTIES.keySet()) {
+            setRenderLayer(LADDERS.get(woodType).get(), RenderType.cutout());
+            setRenderLayer(POSTS.get(woodType).get(), RenderType.cutout());
+            setRenderLayer(STRIPPED_POSTS.get(woodType).get(), RenderType.cutout());
+            setRenderLayer(HEDGES.get(woodType).get(), RenderType.cutout());
+            setRenderLayer(LEAF_CARPETS.get(woodType).get(), RenderType.cutout());
+            setRenderLayer(LEAF_PILES.get(woodType).get(), RenderType.cutout());
+            setRenderLayer(TABLES.get(woodType).get(), RenderType.cutout());
         }
         setRenderLayer(FLOWERING_OAK_LEAF_CARPET.get(), RenderType.cutout());
         setRenderLayer(FLOWERING_OAK_LEAF_PILE.get(), RenderType.cutout());

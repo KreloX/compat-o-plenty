@@ -1,18 +1,16 @@
 package com.seleneandmana.compatoplenty.core.data.client;
 
+import biomesoplenty.api.BOPAPI;
 import biomesoplenty.api.block.BOPBlocks;
 import com.ninni.twigs.TwigsProperties;
 import com.seleneandmana.compatoplenty.core.CompatOPlenty;
-import com.seleneandmana.compatoplenty.core.other.WoodMaterial;
 import com.teamabnormals.blueprint.core.data.client.BlueprintBlockStateProvider;
 import net.minecraft.core.Direction;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.RotatedPillarBlock;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraftforge.client.model.generators.BlockModelBuilder;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import org.violetmoon.quark.content.building.block.HedgeBlock;
@@ -32,33 +30,34 @@ public class COPBlockStateProvider extends BlueprintBlockStateProvider {
 
     @Override
     protected void registerStatesAndModels() {
-        for (var woodMaterial : WoodMaterial.WOOD_MATERIALS) {
-            String name = woodMaterial.getName();
-            Block planks = CompatOPlenty.bopBlock(name + "_planks").get();
-            Block leaves = CompatOPlenty.bopBlock(name + "_leaves").get();
-            Block log = CompatOPlenty.bopBlock(name + "_log").get();
+        for (var woodType : WOOD_PROPERTIES.keySet()) {
+            String materialName = woodType.name().replace(BOPAPI.MOD_ID + ":", "");
+            Block leaves = CompatOPlenty.bopBlock(materialName + "_leaves").get();
+            Block planks = CompatOPlenty.bopBlock(materialName + "_planks").get();
+            Block log = CompatOPlenty.bopBlock(materialName + "_log").get();
 
             // Woodworks
-            boardsBlock(BOARDS.get(woodMaterial));
-            leafPileBlock(leaves, LEAF_PILES.get(woodMaterial));
-            ladderBlock(LADDERS.get(woodMaterial));
-            beehiveBlock(BEEHIVES.get(woodMaterial));
-            bookshelfBlock(planks, BOOKSHELVES.get(woodMaterial));
-            chestBlocks(planks, CHESTS.get(woodMaterial), TRAPPED_CHESTS.get(woodMaterial));
+            boardsBlock(BOARDS.get(woodType));
+            leafPileBlock(leaves, LEAF_PILES.get(woodType));
+            ladderBlock(LADDERS.get(woodType));
+            beehiveBlock(BEEHIVES.get(woodType));
+            bookshelfBlock(planks, BOOKSHELVES.get(woodType));
+            chestBlocks(planks, CHESTS.get(woodType), TRAPPED_CHESTS.get(woodType));
 
             // Farmer's Delight
-            cabinetBlock(CABINETS.get(woodMaterial).get());
+            cabinetBlock(CABINETS.get(woodType));
 
             // Twigs
-            tableBlock(TABLES.get(woodMaterial).get());
+            tableBlock(planks, TABLES.get(woodType));
 
             // Quark
-            verticalPlanksBlock(planks, VERTICAL_PLANKS.get(woodMaterial));
-            leafCarpetBlock(leaves, LEAF_CARPETS.get(woodMaterial));
-            hedgeBlock(leaves, log, HEDGES.get(woodMaterial));
-            verticalSlabBlock(planks, VERTICAL_SLABS.get(woodMaterial));
-            woodPostBlock(log, POSTS.get(woodMaterial));
-            woodPostBlock(CompatOPlenty.bopBlock("stripped_" + name + "_log").get(), STRIPPED_POSTS.get(woodMaterial));
+            hollowLogBlock(log, HOLLOW_LOGS.get(woodType));
+            verticalPlanksBlock(planks, VERTICAL_PLANKS.get(woodType));
+            leafCarpetBlock(leaves, LEAF_CARPETS.get(woodType));
+            hedgeBlock(leaves, log, HEDGES.get(woodType));
+            verticalSlabBlock(planks, VERTICAL_SLABS.get(woodType));
+            woodPostBlock(log, POSTS.get(woodType));
+            woodPostBlock(CompatOPlenty.bopBlock("stripped_" + materialName + "_log").get(), STRIPPED_POSTS.get(woodType));
         }
 
         verticalSlabBlock(BOPBlocks.WHITE_SANDSTONE, WHITE_SANDSTONE_VERTICAL_SLAB);
@@ -95,6 +94,10 @@ public class COPBlockStateProvider extends BlueprintBlockStateProvider {
         block(CRACKED_POLISHED_ROSE_QUARTZ_BRICKS);
         block(CHISELED_POLISHED_ROSE_QUARTZ);
 
+        leafPileBlock(BOPBlocks.ORIGIN_LEAVES, ORIGIN_LEAF_PILE);
+        leafCarpetBlock(BOPBlocks.ORIGIN_LEAVES, ORIGIN_LEAF_CARPET);
+        hedgeBlock(BOPBlocks.ORIGIN_LEAVES, Blocks.OAK_LOG, ORIGIN_HEDGE);
+
         leafPileBlock(BOPBlocks.FLOWERING_OAK_LEAVES, FLOWERING_OAK_LEAF_PILE);
         leafCarpetBlock(BOPBlocks.FLOWERING_OAK_LEAVES, FLOWERING_OAK_LEAF_CARPET);
         hedgeBlock(BOPBlocks.FLOWERING_OAK_LEAVES, Blocks.OAK_LOG, FLOWERING_OAK_HEDGE);
@@ -103,9 +106,13 @@ public class COPBlockStateProvider extends BlueprintBlockStateProvider {
         leafCarpetBlock(BOPBlocks.RAINBOW_BIRCH_LEAVES, RAINBOW_BIRCH_LEAF_CARPET);
         hedgeBlock(BOPBlocks.RAINBOW_BIRCH_LEAVES, Blocks.BIRCH_LOG, RAINBOW_BIRCH_HEDGE);
 
-        leafPileBlock(BOPBlocks.ORIGIN_LEAVES, ORIGIN_LEAF_PILE);
-        leafCarpetBlock(BOPBlocks.ORIGIN_LEAVES, ORIGIN_LEAF_CARPET);
-        hedgeBlock(BOPBlocks.ORIGIN_LEAVES, Blocks.OAK_LOG, ORIGIN_HEDGE);
+        leafPileBlock(BOPBlocks.CYPRESS_LEAVES, CYPRESS_LEAF_PILE);
+        leafCarpetBlock(BOPBlocks.CYPRESS_LEAVES, CYPRESS_LEAF_CARPET);
+        hedgeBlock(BOPBlocks.CYPRESS_LEAVES, Blocks.OAK_LOG, CYPRESS_HEDGE);
+
+        leafPileBlock(BOPBlocks.SNOWBLOSSOM_LEAVES, SNOWBLOSSOM_LEAF_PILE);
+        leafCarpetBlock(BOPBlocks.SNOWBLOSSOM_LEAVES, SNOWBLOSSOM_LEAF_CARPET);
+        hedgeBlock(BOPBlocks.SNOWBLOSSOM_LEAVES, Blocks.OAK_LOG, SNOWBLOSSOM_HEDGE);
 
         leafPileBlock(BOPBlocks.RED_MAPLE_LEAVES, RED_MAPLE_LEAF_PILE);
         leafCarpetBlock(BOPBlocks.RED_MAPLE_LEAVES, RED_MAPLE_LEAF_CARPET);
@@ -120,39 +127,46 @@ public class COPBlockStateProvider extends BlueprintBlockStateProvider {
         hedgeBlock(BOPBlocks.YELLOW_MAPLE_LEAVES, Blocks.BIRCH_LOG, YELLOW_MAPLE_HEDGE);
     }
 
-    public void cabinetBlock(Block cabinet) {
-        Function<BlockState, ModelFile> model = state -> {
+    public void cabinetBlock(Supplier<Block> cabinet) {
+        Block cabinetBlock = cabinet.get();
+        horizontalBlock(cabinetBlock, state -> {
             String suffix = state.getValue(CabinetBlock.OPEN) ? "_open" : "";
-            return models().orientable(name(cabinet) + suffix,
-                    blockTexture(cabinet).withSuffix("_side"),
-                    blockTexture(cabinet).withSuffix("_front" + suffix),
-                    blockTexture(cabinet).withSuffix("_top"));
-        };
-        horizontalBlock(cabinet, model);
-        blockItem(cabinet);
+            return models().orientable(name(cabinetBlock) + suffix,
+                    blockTexture(cabinetBlock).withSuffix("_side"),
+                    blockTexture(cabinetBlock).withSuffix("_front" + suffix),
+                    blockTexture(cabinetBlock).withSuffix("_top"));
+        });
+        blockItem(cabinetBlock);
     }
 
 
-    public void tableBlock(Block table) {
-        String materialName = name(table).replace("_table", "");
-        var tableTop = tableModel(materialName, "_top");
-        var tableLeg = tableModel(materialName, "_leg");
-        getMultipartBuilder(table)
-                .part().modelFile(tableTop).addModel().end()
+    public void tableBlock(Block planks, Supplier<Block> table) {
+        Block tableBlock = table.get();
+        Function<String, ModelFile> model = suffix -> models().withExistingParent(name(tableBlock) + suffix, "twigs:block/template_table" + suffix)
+                .texture("side", blockTexture(tableBlock))
+                .texture("bottom", blockTexture(tableBlock).withSuffix("_bottom"))
+                .texture("top", blockTexture(tableBlock).withSuffix("_top"))
+                .texture("particle", blockTexture(planks));
+        ModelFile tableLeg = model.apply("_leg");
+        getMultipartBuilder(tableBlock)
+                .part().modelFile(model.apply("_top")).addModel().end()
                 .part().modelFile(tableLeg).addModel().condition(TwigsProperties.TABLE_LEG1, true).end()
                 .part().modelFile(tableLeg).rotationY(90).addModel().condition(TwigsProperties.TABLE_LEG2, true).end()
                 .part().modelFile(tableLeg).rotationY(180).addModel().condition(TwigsProperties.TABLE_LEG3, true).end()
                 .part().modelFile(tableLeg).rotationY(270).addModel().condition(TwigsProperties.TABLE_LEG4, true).end();
-        var tableInv = tableModel(materialName, "_inventory");
-        simpleBlockItem(table, tableInv);
+        simpleBlockItem(tableBlock, model.apply("_inventory"));
     }
 
-    public BlockModelBuilder tableModel(String materialName, String typeSuffix) {
-        return models().withExistingParent(materialName + "_table" + typeSuffix, "twigs:block/template_table" + typeSuffix)
-                .texture("side", modLoc("block/" + materialName + "_table"))
-                .texture("bottom", modLoc("block/" + materialName + "_table_bottom"))
-                .texture("top", modLoc("block/" + materialName + "_table_top"))
-                .texture("particle", CompatOPlenty.bopLoc("block/" + materialName + "_planks"));
+    public void hollowLogBlock(Block log, Supplier<Block> hollowLog) {
+        if (hollowLog.get() instanceof RotatedPillarBlock hollowLogBlock) {
+            var logLoc = blockTexture(log);
+            Function<String, ModelFile> model = suffix -> models().withExistingParent(name(hollowLogBlock) + suffix, "quark:block/hollow_log" + suffix)
+                    .texture("end", logLoc.withSuffix("_top"))
+                    .texture("side", logLoc)
+                    .texture("inside", logLoc.toString().replace("block/", "block/stripped_"));
+            axisBlock(hollowLogBlock, model.apply(""), model.apply("_horizontal"));
+            blockItem(hollowLogBlock);
+        }
     }
 
     public void verticalPlanksBlock(Block planks, Supplier<Block> verticalPlanks) {
@@ -170,12 +184,12 @@ public class COPBlockStateProvider extends BlueprintBlockStateProvider {
     public void hedgeBlock(Block leaves, Block log, Supplier<Block> hedge) {
         String name = name(hedge.get());
         var leavesLoc = blockTexture(leaves);
-        var hedgePost = models().withExistingParent(name + "_post", "quark:block/hedge_post")
+        ModelFile hedgePost = models().withExistingParent(name + "_post", "quark:block/hedge_post")
                 .texture("log", blockTexture(log))
                 .texture("leaf", leavesLoc);
-        var hedgeExtend = models().withExistingParent(name + "_extend", "quark:block/hedge_extend")
+        ModelFile hedgeExtend = models().withExistingParent(name + "_extend", "quark:block/hedge_extend")
                 .texture("leaf", leavesLoc);
-        var hedgeSide = models().withExistingParent(name + "_side", "quark:block/hedge_side")
+        ModelFile hedgeSide = models().withExistingParent(name + "_side", "quark:block/hedge_side")
                 .texture("leaf", leavesLoc);
         getMultipartBuilder(hedge.get())
                 .part().modelFile(hedgePost).addModel().condition(HedgeBlock.EXTEND, false).end()
@@ -189,7 +203,7 @@ public class COPBlockStateProvider extends BlueprintBlockStateProvider {
 
     public void verticalSlabBlock(Block block, Supplier<Block> verticalSlab) {
         var blockLoc = blockTexture(block);
-        var verticalSlabModel = models().withExistingParent(name(verticalSlab.get()), "quark:block/vertical_slab")
+        ModelFile verticalSlabModel = models().withExistingParent(name(verticalSlab.get()), "quark:block/vertical_slab")
                 .texture("bottom", blockLoc)
                 .texture("top", blockLoc)
                 .texture("side", blockLoc);
@@ -210,13 +224,13 @@ public class COPBlockStateProvider extends BlueprintBlockStateProvider {
     public void woodPostBlock(Block log, Supplier<Block> post) {
         String materialName = name(post.get()).replace("_post", "");
         var logLoc = blockTexture(log);
-        var postModel = models().withExistingParent(materialName + "_post", "quark:block/post")
+        ModelFile postModel = models().withExistingParent(materialName + "_post", "quark:block/post")
                 .texture("texture", logLoc);
-        var chainSmall = models().getExistingFile(mcLoc("quark:block/chain_small"));
-        var chainSmallTop = models().getExistingFile(mcLoc("quark:block/chain_small_top"));
-        var postConnect = models().withExistingParent("block/" + materialName + "_post_connect", "quark:block/post_connect")
+        ModelFile chainSmall = models().getExistingFile(mcLoc("quark:block/chain_small"));
+        ModelFile chainSmallTop = models().getExistingFile(mcLoc("quark:block/chain_small_top"));
+        ModelFile postConnect = models().withExistingParent("block/" + materialName + "_post_connect", "quark:block/post_connect")
                 .texture("texture", logLoc);
-        var postConnectTop = models().withExistingParent("block/" + materialName + "_post_connect_top", "quark:block/post_connect_top")
+        ModelFile postConnectTop = models().withExistingParent("block/" + materialName + "_post_connect_top", "quark:block/post_connect_top")
                 .texture("texture", logLoc);
         getMultipartBuilder(post.get())
                 .part().modelFile(postModel).addModel().condition(BlockStateProperties.AXIS, Direction.Axis.Y).end()

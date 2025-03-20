@@ -1,5 +1,14 @@
 {
   "values": [
-    "compatoplenty:hellbark_furnace_boat"
+    "compatoplenty:willow_furnace_boat",
+    "compatoplenty:hellbark_furnace_boat",
+    "compatoplenty:fir_furnace_boat",
+    "compatoplenty:mahogany_furnace_boat",
+    "compatoplenty:palm_furnace_boat",
+    "compatoplenty:redwood_furnace_boat",
+    "compatoplenty:magic_furnace_boat",
+    "compatoplenty:jacaranda_furnace_boat",
+    "compatoplenty:umbran_furnace_boat",
+    "compatoplenty:dead_furnace_boat"
   ]
 }

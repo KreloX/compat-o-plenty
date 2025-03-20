@@ -10,7 +10,7 @@
       ],
       "recipe": {
         "type": "minecraft:crafting_shaped",
-        "category": "misc",
+        "category": "building",
         "key": {
           "#": {
             "item": "biomesoplenty:rose_quartz_block"

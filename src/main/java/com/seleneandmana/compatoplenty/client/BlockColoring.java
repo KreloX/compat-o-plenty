@@ -1,8 +1,8 @@
 package com.seleneandmana.compatoplenty.client;
 
+import biomesoplenty.api.block.BOPWoodTypes;
 import biomesoplenty.init.ModClient;
 import com.seleneandmana.compatoplenty.core.CompatOPlenty;
-import com.seleneandmana.compatoplenty.core.other.WoodMaterial;
 import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.FoliageColor;
@@ -23,9 +23,9 @@ public class BlockColoring {
 
     private static final Supplier<Block[]> NORMAL = () -> new Block[]{
             FLOWERING_OAK_LEAF_CARPET.get(), FLOWERING_OAK_LEAF_PILE.get(), FLOWERING_OAK_HEDGE.get(),
-            LEAF_CARPETS.get(WoodMaterial.MAHOGANY).get(), LEAF_PILES.get(WoodMaterial.MAHOGANY).get(), HEDGES.get(WoodMaterial.MAHOGANY).get(),
-            LEAF_CARPETS.get(WoodMaterial.WILLOW).get(), LEAF_PILES.get(WoodMaterial.WILLOW).get(), HEDGES.get(WoodMaterial.WILLOW).get(),
-            LEAF_CARPETS.get(WoodMaterial.PALM).get(), LEAF_PILES.get(WoodMaterial.PALM).get(), HEDGES.get(WoodMaterial.PALM).get()
+            LEAF_CARPETS.get(BOPWoodTypes.MAHOGANY).get(), LEAF_PILES.get(BOPWoodTypes.MAHOGANY).get(), HEDGES.get(BOPWoodTypes.MAHOGANY).get(),
+            LEAF_CARPETS.get(BOPWoodTypes.WILLOW).get(), LEAF_PILES.get(BOPWoodTypes.WILLOW).get(), HEDGES.get(BOPWoodTypes.WILLOW).get(),
+            LEAF_CARPETS.get(BOPWoodTypes.PALM).get(), LEAF_PILES.get(BOPWoodTypes.PALM).get(), HEDGES.get(BOPWoodTypes.PALM).get()
     };
 
     @SubscribeEvent
