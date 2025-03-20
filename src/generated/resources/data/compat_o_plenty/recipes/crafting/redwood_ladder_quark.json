@@ -1,0 +1,33 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "quark:flag",
+          "flag": "variant_ladders"
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shaped",
+        "category": "misc",
+        "key": {
+          "#": {
+            "item": "minecraft:stick"
+          },
+          "P": []
+        },
+        "pattern": [
+          "# #",
+          "#P#",
+          "# #"
+        ],
+        "result": {
+          "count": 4,
+          "item": "compat_o_plenty:redwood_ladder"
+        },
+        "show_notification": true
+      }
+    }
+  ]
+}

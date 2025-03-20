@@ -1,10 +1,10 @@
 {
   "values": [
-    "compatoplenty:black_sandstone_brick_stairs",
-    "compatoplenty:orange_sandstone_brick_stairs",
-    "compatoplenty:white_sandstone_brick_stairs",
-    "compatoplenty:galanos_stairs",
-    "compatoplenty:polished_rose_quartz_stairs",
-    "compatoplenty:polished_rose_quartz_brick_stairs"
+    "compat_o_plenty:black_sandstone_brick_stairs",
+    "compat_o_plenty:orange_sandstone_brick_stairs",
+    "compat_o_plenty:white_sandstone_brick_stairs",
+    "compat_o_plenty:galanos_stairs",
+    "compat_o_plenty:polished_rose_quartz_stairs",
+    "compat_o_plenty:polished_rose_quartz_brick_stairs"
   ]
 }

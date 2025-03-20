@@ -1,14 +1,14 @@
 {
   "values": [
-    "compatoplenty:willow_bookshelf",
-    "compatoplenty:hellbark_bookshelf",
-    "compatoplenty:fir_bookshelf",
-    "compatoplenty:mahogany_bookshelf",
-    "compatoplenty:palm_bookshelf",
-    "compatoplenty:redwood_bookshelf",
-    "compatoplenty:magic_bookshelf",
-    "compatoplenty:jacaranda_bookshelf",
-    "compatoplenty:umbran_bookshelf",
-    "compatoplenty:dead_bookshelf"
+    "compat_o_plenty:jacaranda_bookshelf",
+    "compat_o_plenty:dead_bookshelf",
+    "compat_o_plenty:magic_bookshelf",
+    "compat_o_plenty:hellbark_bookshelf",
+    "compat_o_plenty:willow_bookshelf",
+    "compat_o_plenty:redwood_bookshelf",
+    "compat_o_plenty:umbran_bookshelf",
+    "compat_o_plenty:fir_bookshelf",
+    "compat_o_plenty:palm_bookshelf",
+    "compat_o_plenty:mahogany_bookshelf"
   ]
 }

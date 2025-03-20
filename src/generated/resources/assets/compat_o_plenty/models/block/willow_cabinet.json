@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "front": "compat_o_plenty:block/willow_cabinet_front",
+    "side": "compat_o_plenty:block/willow_cabinet_side",
+    "top": "compat_o_plenty:block/willow_cabinet_top"
+  }
+}

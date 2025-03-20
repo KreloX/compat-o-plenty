@@ -1,9 +1,0 @@
-{
-  "parent": "twigs:block/template_table_top",
-  "textures": {
-    "bottom": "compatoplenty:block/redwood_table_bottom",
-    "particle": "biomesoplenty:block/redwood_planks",
-    "side": "compatoplenty:block/redwood_table",
-    "top": "compatoplenty:block/redwood_table_top"
-  }
-}

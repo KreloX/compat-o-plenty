@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/wall_inventory",
+  "textures": {
+    "wall": "compat_o_plenty:block/white_sandstone_bricks"
+  }
+}

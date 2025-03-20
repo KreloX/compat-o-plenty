@@ -1,0 +1,25 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "twigs"
+        },
+        {
+          "type": "quark:flag",
+          "flag": "vertical_slabs"
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:stonecutting",
+        "count": 2,
+        "ingredient": {
+          "item": "compat_o_plenty:polished_rose_quartz"
+        },
+        "result": "compat_o_plenty:polished_rose_quartz_vertical_slab"
+      }
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "quark:flag",
+          "flag": "midori"
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shaped",
+        "category": "building",
+        "key": {
+          "#": {
+            "item": "compat_o_plenty:glowing_moss_paste"
+          }
+        },
+        "pattern": [
+          "##",
+          "##"
+        ],
+        "result": {
+          "item": "compat_o_plenty:galanos_block"
+        },
+        "show_notification": true
+      }
+    }
+  ]
+}

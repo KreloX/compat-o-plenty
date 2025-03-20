@@ -1,0 +1,34 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "boatload"
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shaped",
+        "category": "misc",
+        "group": "large_boat",
+        "key": {
+          "#": {
+            "item": "biomesoplenty:magic_planks"
+          },
+          "B": {
+            "item": "biomesoplenty:magic_boat"
+          }
+        },
+        "pattern": [
+          "#B#",
+          "###"
+        ],
+        "result": {
+          "item": "compat_o_plenty:large_magic_boat"
+        },
+        "show_notification": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "biomesoplenty:block/umbran_planks",
+    "side": "compat_o_plenty:block/umbran_bookshelf"
+  }
+}

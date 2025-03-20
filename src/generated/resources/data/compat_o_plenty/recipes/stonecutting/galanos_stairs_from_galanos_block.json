@@ -1,0 +1,21 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "quark:flag",
+          "flag": "midori"
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:stonecutting",
+        "count": 1,
+        "ingredient": {
+          "item": "compat_o_plenty:galanos_block"
+        },
+        "result": "compat_o_plenty:galanos_stairs"
+      }
+    }
+  ]
+}

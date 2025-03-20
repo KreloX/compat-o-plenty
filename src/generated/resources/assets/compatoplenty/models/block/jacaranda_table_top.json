@@ -1,9 +1,0 @@
-{
-  "parent": "twigs:block/template_table_top",
-  "textures": {
-    "bottom": "compatoplenty:block/jacaranda_table_bottom",
-    "particle": "biomesoplenty:block/jacaranda_planks",
-    "side": "compatoplenty:block/jacaranda_table",
-    "top": "compatoplenty:block/jacaranda_table_top"
-  }
-}

@@ -1,0 +1,32 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "quark:flag",
+          "flag": "sandstone_bricks"
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shaped",
+        "category": "building",
+        "key": {
+          "#": {
+            "item": "compat_o_plenty:orange_sandstone_bricks"
+          }
+        },
+        "pattern": [
+          "#  ",
+          "## ",
+          "###"
+        ],
+        "result": {
+          "count": 4,
+          "item": "compat_o_plenty:orange_sandstone_brick_stairs"
+        },
+        "show_notification": true
+      }
+    }
+  ]
+}

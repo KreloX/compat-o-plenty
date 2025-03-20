@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "compat_o_plenty:block/umbran_ladder"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "blueprint:and",
+          "values": [
+            {
+              "type": "forge:mod_loaded",
+              "modid": "woodworks"
+            },
+            {
+              "type": "woodworks:config",
+              "value": "wooden_chests"
+            }
+          ]
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shaped",
+        "category": "misc",
+        "key": {
+          "#": {
+            "item": "biomesoplenty:dead_planks"
+          }
+        },
+        "pattern": [
+          "###",
+          "# #",
+          "###"
+        ],
+        "result": {
+          "item": "compat_o_plenty:dead_chest"
+        },
+        "show_notification": true
+      }
+    }
+  ]
+}

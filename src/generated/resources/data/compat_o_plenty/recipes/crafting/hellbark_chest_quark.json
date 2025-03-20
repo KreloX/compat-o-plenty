@@ -1,0 +1,31 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "quark:flag",
+          "flag": "variant_chests"
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shaped",
+        "category": "misc",
+        "key": {
+          "#": {
+            "item": "biomesoplenty:hellbark_planks"
+          }
+        },
+        "pattern": [
+          "###",
+          "# #",
+          "###"
+        ],
+        "result": {
+          "item": "compat_o_plenty:hellbark_chest"
+        },
+        "show_notification": true
+      }
+    }
+  ]
+}

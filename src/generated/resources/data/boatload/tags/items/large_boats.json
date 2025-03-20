@@ -1,14 +1,14 @@
 {
   "values": [
-    "compatoplenty:large_willow_boat",
-    "compatoplenty:large_hellbark_boat",
-    "compatoplenty:large_fir_boat",
-    "compatoplenty:large_mahogany_boat",
-    "compatoplenty:large_palm_boat",
-    "compatoplenty:large_redwood_boat",
-    "compatoplenty:large_magic_boat",
-    "compatoplenty:large_jacaranda_boat",
-    "compatoplenty:large_umbran_boat",
-    "compatoplenty:large_dead_boat"
+    "compat_o_plenty:large_jacaranda_boat",
+    "compat_o_plenty:large_dead_boat",
+    "compat_o_plenty:large_magic_boat",
+    "compat_o_plenty:large_hellbark_boat",
+    "compat_o_plenty:large_willow_boat",
+    "compat_o_plenty:large_redwood_boat",
+    "compat_o_plenty:large_umbran_boat",
+    "compat_o_plenty:large_fir_boat",
+    "compat_o_plenty:large_palm_boat",
+    "compat_o_plenty:large_mahogany_boat"
   ]
 }

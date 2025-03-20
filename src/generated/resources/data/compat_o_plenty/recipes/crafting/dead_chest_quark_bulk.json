@@ -1,0 +1,41 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:and",
+          "values": [
+            {
+              "type": "quark:flag",
+              "flag": "wood_to_chest_recipes"
+            },
+            {
+              "type": "quark:flag",
+              "flag": "variant_chests"
+            }
+          ]
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shaped",
+        "category": "misc",
+        "key": {
+          "#": {
+            "tag": "biomesoplenty:dead_logs"
+          }
+        },
+        "pattern": [
+          "###",
+          "# #",
+          "###"
+        ],
+        "result": {
+          "count": 4,
+          "item": "compat_o_plenty:dead_chest"
+        },
+        "show_notification": true
+      }
+    }
+  ]
+}

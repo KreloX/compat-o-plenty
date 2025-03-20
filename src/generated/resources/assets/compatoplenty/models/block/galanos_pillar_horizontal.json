@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/cube_column_horizontal",
-  "textures": {
-    "end": "compatoplenty:block/galanos_pillar_top",
-    "side": "compatoplenty:block/galanos_pillar"
-  }
-}

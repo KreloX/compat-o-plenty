@@ -1,0 +1,30 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "quark:flag",
+          "flag": "midori"
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shaped",
+        "category": "building",
+        "key": {
+          "#": {
+            "item": "compat_o_plenty:galanos_block"
+          }
+        },
+        "pattern": [
+          "###"
+        ],
+        "result": {
+          "count": 6,
+          "item": "compat_o_plenty:galanos_slab"
+        },
+        "show_notification": true
+      }
+    }
+  ]
+}

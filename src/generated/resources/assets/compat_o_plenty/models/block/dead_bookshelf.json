@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "biomesoplenty:block/dead_planks",
+    "side": "compat_o_plenty:block/dead_bookshelf"
+  }
+}

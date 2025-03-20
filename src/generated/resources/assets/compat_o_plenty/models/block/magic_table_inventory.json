@@ -1,0 +1,9 @@
+{
+  "parent": "twigs:block/template_table_inventory",
+  "textures": {
+    "bottom": "compat_o_plenty:block/magic_table_bottom",
+    "particle": "biomesoplenty:block/magic_planks",
+    "side": "compat_o_plenty:block/magic_table",
+    "top": "compat_o_plenty:block/magic_table_top"
+  }
+}

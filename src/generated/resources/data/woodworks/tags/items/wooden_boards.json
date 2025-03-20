@@ -1,14 +1,14 @@
 {
   "values": [
-    "compatoplenty:willow_boards",
-    "compatoplenty:hellbark_boards",
-    "compatoplenty:fir_boards",
-    "compatoplenty:mahogany_boards",
-    "compatoplenty:palm_boards",
-    "compatoplenty:redwood_boards",
-    "compatoplenty:magic_boards",
-    "compatoplenty:jacaranda_boards",
-    "compatoplenty:umbran_boards",
-    "compatoplenty:dead_boards"
+    "compat_o_plenty:jacaranda_boards",
+    "compat_o_plenty:dead_boards",
+    "compat_o_plenty:magic_boards",
+    "compat_o_plenty:hellbark_boards",
+    "compat_o_plenty:willow_boards",
+    "compat_o_plenty:redwood_boards",
+    "compat_o_plenty:umbran_boards",
+    "compat_o_plenty:fir_boards",
+    "compat_o_plenty:palm_boards",
+    "compat_o_plenty:mahogany_boards"
   ]
 }

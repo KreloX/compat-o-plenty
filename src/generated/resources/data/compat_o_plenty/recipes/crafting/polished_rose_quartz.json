@@ -1,0 +1,30 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "twigs"
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shaped",
+        "category": "building",
+        "key": {
+          "#": {
+            "item": "biomesoplenty:rose_quartz_block"
+          }
+        },
+        "pattern": [
+          "##",
+          "##"
+        ],
+        "result": {
+          "item": "compat_o_plenty:polished_rose_quartz"
+        },
+        "show_notification": true
+      }
+    }
+  ]
+}

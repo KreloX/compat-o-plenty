@@ -1,0 +1,23 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "quark:flag",
+          "flag": "midori"
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:smelting",
+        "category": "misc",
+        "cookingtime": 200,
+        "experience": 1.0,
+        "ingredient": {
+          "item": "biomesoplenty:glowing_moss_block"
+        },
+        "result": "compat_o_plenty:glowing_moss_paste"
+      }
+    }
+  ]
+}

@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab_top",
-  "textures": {
-    "bottom": "compatoplenty:block/polished_rose_quartz_bricks",
-    "side": "compatoplenty:block/polished_rose_quartz_bricks",
-    "top": "compatoplenty:block/polished_rose_quartz_bricks"
-  }
-}

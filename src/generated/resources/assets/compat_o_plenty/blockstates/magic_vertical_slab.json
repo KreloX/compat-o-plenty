@@ -1,0 +1,26 @@
+{
+  "variants": {
+    "type=double": {
+      "model": "biomesoplenty:block/magic_planks"
+    },
+    "type=east": {
+      "model": "compat_o_plenty:block/magic_vertical_slab",
+      "uvlock": true,
+      "y": 90
+    },
+    "type=north": {
+      "model": "compat_o_plenty:block/magic_vertical_slab",
+      "uvlock": true
+    },
+    "type=south": {
+      "model": "compat_o_plenty:block/magic_vertical_slab",
+      "uvlock": true,
+      "y": 180
+    },
+    "type=west": {
+      "model": "compat_o_plenty:block/magic_vertical_slab",
+      "uvlock": true,
+      "y": 270
+    }
+  }
+}

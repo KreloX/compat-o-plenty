@@ -1,0 +1,29 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "boatload"
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shapeless",
+        "category": "misc",
+        "group": "furnace_boat",
+        "ingredients": [
+          {
+            "item": "minecraft:furnace"
+          },
+          {
+            "item": "biomesoplenty:redwood_boat"
+          }
+        ],
+        "result": {
+          "item": "compat_o_plenty:redwood_furnace_boat"
+        }
+      }
+    }
+  ]
+}

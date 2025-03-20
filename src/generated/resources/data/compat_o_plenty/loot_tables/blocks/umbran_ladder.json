@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "compat_o_plenty:umbran_ladder"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "compat_o_plenty:blocks/umbran_ladder"
+}

@@ -1,0 +1,14 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "compat_o_plenty:block/willow_boards_horizontal",
+      "y": 270
+    },
+    "axis=y": {
+      "model": "compat_o_plenty:block/willow_boards"
+    },
+    "axis=z": {
+      "model": "compat_o_plenty:block/willow_boards_horizontal"
+    }
+  }
+}

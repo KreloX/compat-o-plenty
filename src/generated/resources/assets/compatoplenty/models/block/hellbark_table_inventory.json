@@ -1,9 +1,0 @@
-{
-  "parent": "twigs:block/template_table_inventory",
-  "textures": {
-    "bottom": "compatoplenty:block/hellbark_table_bottom",
-    "particle": "biomesoplenty:block/hellbark_planks",
-    "side": "compatoplenty:block/hellbark_table",
-    "top": "compatoplenty:block/hellbark_table_top"
-  }
-}

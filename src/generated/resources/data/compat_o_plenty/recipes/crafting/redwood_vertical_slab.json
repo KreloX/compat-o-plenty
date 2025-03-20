@@ -1,0 +1,32 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "quark:flag",
+          "flag": "vertical_slabs"
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shaped",
+        "category": "building",
+        "key": {
+          "S": {
+            "item": "biomesoplenty:redwood_slab"
+          }
+        },
+        "pattern": [
+          "S",
+          "S",
+          "S"
+        ],
+        "result": {
+          "count": 3,
+          "item": "compat_o_plenty:redwood_vertical_slab"
+        },
+        "show_notification": true
+      }
+    }
+  ]
+}

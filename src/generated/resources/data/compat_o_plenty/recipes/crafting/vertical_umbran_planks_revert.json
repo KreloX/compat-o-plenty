@@ -1,0 +1,25 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "quark:flag",
+          "flag": "vertical_planks"
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shapeless",
+        "category": "building",
+        "ingredients": [
+          {
+            "item": "compat_o_plenty:vertical_umbran_planks"
+          }
+        ],
+        "result": {
+          "item": "biomesoplenty:umbran_planks"
+        }
+      }
+    }
+  ]
+}

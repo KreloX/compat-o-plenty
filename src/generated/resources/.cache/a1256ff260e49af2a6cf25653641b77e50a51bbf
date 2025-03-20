@@ -1,0 +1,22 @@
+// 1.20.1	2025-03-20T16:45:26.9270981	Tags for minecraft:block mod id compat_o_plenty
+8fb200d8f156bf7cc1aca4066270423bbd460b66 data/blueprint/tags/blocks/wooden_beehives.json
+820522ca0cc144a28e433c444e79fffae9d3a8c0 data/blueprint/tags/blocks/wooden_bookshelves.json
+9427205a6c01c0abe3bafebf855720d062fcdb51 data/blueprint/tags/blocks/wooden_chests.json
+35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/blueprint/tags/blocks/wooden_chiseled_bookshelves.json
+9808ca2c72094de2e3b6540e303e3571c4d9bbd0 data/blueprint/tags/blocks/wooden_ladders.json
+aa7b067d9bf0bedcf29c540cd3ab0f3035014f8f data/blueprint/tags/blocks/wooden_trapped_chests.json
+305500b28f91478c6045c585ccfbd5cac521a9bb data/farmersdelight/tags/blocks/compost_activators.json
+550281beadd65acbd1f5e32761b9b83b37cd218d data/minecraft/tags/blocks/crystal_sound_blocks.json
+5c1a7bc50a460a7c79074065aba31026d9bb3b42 data/minecraft/tags/blocks/mineable/axe.json
+5a79f821c2d1b10bd7e92bc41b413c3a36abbcbb data/minecraft/tags/blocks/mineable/hoe.json
+3d9ef5a4accefc28a0ebc77ac167747810fd5c44 data/minecraft/tags/blocks/mineable/pickaxe.json
+bd7851715dc8e7e75f189b8b7e2737e34760bc69 data/minecraft/tags/blocks/planks.json
+0a3ca20625d41a2ccbcde5acc54289cac6e52894 data/minecraft/tags/blocks/slabs.json
+c1949aacaa412dc8130ffbd20e8565d9f659bf73 data/minecraft/tags/blocks/stairs.json
+74d1ff5224a071747ceacbe0a48aa3fa25b41c73 data/minecraft/tags/blocks/walls.json
+d6a4e6adcc1225093bd4ce0a6e8ae806c578b8eb data/quark/tags/blocks/hedges.json
+756d3d918950f042347f3c745e2dd9bf74b446b5 data/quark/tags/blocks/hollow_logs.json
+32f51073894b01a0863d0e9be307b32ec6483eb8 data/quark/tags/blocks/vertical_slabs.json
+c0c1ccf3e3dbcbb13e114c2259923e777abfdb38 data/twigs/tags/blocks/tables.json
+4958d156619292c6d26a2b2f9fb583c93ab1f1bb data/woodworks/tags/blocks/leaf_piles.json
+efa2f186b1176711bf7c9152f6099557ed36313c data/woodworks/tags/blocks/wooden_boards.json

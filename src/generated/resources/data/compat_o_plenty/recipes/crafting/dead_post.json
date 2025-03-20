@@ -1,0 +1,32 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "quark:flag",
+          "flag": "wooden_posts"
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shaped",
+        "category": "misc",
+        "key": {
+          "#": {
+            "item": "biomesoplenty:dead_wood"
+          }
+        },
+        "pattern": [
+          "#",
+          "#",
+          "#"
+        ],
+        "result": {
+          "count": 8,
+          "item": "compat_o_plenty:dead_post"
+        },
+        "show_notification": true
+      }
+    }
+  ]
+}

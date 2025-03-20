@@ -1,0 +1,44 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "compat_o_plenty:block/palm_table_top"
+      }
+    },
+    {
+      "apply": {
+        "model": "compat_o_plenty:block/palm_table_leg"
+      },
+      "when": {
+        "table_leg1": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "compat_o_plenty:block/palm_table_leg",
+        "y": 90
+      },
+      "when": {
+        "table_leg2": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "compat_o_plenty:block/palm_table_leg",
+        "y": 180
+      },
+      "when": {
+        "table_leg3": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "compat_o_plenty:block/palm_table_leg",
+        "y": 270
+      },
+      "when": {
+        "table_leg4": "true"
+      }
+    }
+  ]
+}

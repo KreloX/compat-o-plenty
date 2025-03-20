@@ -1,14 +1,14 @@
 {
   "values": [
-    "compatoplenty:willow_cabinet",
-    "compatoplenty:hellbark_cabinet",
-    "compatoplenty:fir_cabinet",
-    "compatoplenty:mahogany_cabinet",
-    "compatoplenty:palm_cabinet",
-    "compatoplenty:redwood_cabinet",
-    "compatoplenty:magic_cabinet",
-    "compatoplenty:jacaranda_cabinet",
-    "compatoplenty:umbran_cabinet",
-    "compatoplenty:dead_cabinet"
+    "compat_o_plenty:jacaranda_cabinet",
+    "compat_o_plenty:dead_cabinet",
+    "compat_o_plenty:magic_cabinet",
+    "compat_o_plenty:hellbark_cabinet",
+    "compat_o_plenty:willow_cabinet",
+    "compat_o_plenty:redwood_cabinet",
+    "compat_o_plenty:umbran_cabinet",
+    "compat_o_plenty:fir_cabinet",
+    "compat_o_plenty:palm_cabinet",
+    "compat_o_plenty:mahogany_cabinet"
   ]
 }

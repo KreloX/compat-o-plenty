@@ -1,14 +1,14 @@
 {
   "values": [
-    "compatoplenty:willow_table",
-    "compatoplenty:hellbark_table",
-    "compatoplenty:fir_table",
-    "compatoplenty:mahogany_table",
-    "compatoplenty:palm_table",
-    "compatoplenty:redwood_table",
-    "compatoplenty:magic_table",
-    "compatoplenty:jacaranda_table",
-    "compatoplenty:umbran_table",
-    "compatoplenty:dead_table"
+    "compat_o_plenty:jacaranda_table",
+    "compat_o_plenty:dead_table",
+    "compat_o_plenty:magic_table",
+    "compat_o_plenty:hellbark_table",
+    "compat_o_plenty:willow_table",
+    "compat_o_plenty:redwood_table",
+    "compat_o_plenty:umbran_table",
+    "compat_o_plenty:fir_table",
+    "compat_o_plenty:palm_table",
+    "compat_o_plenty:mahogany_table"
   ]
 }

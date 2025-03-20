@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/orientable",
-  "textures": {
-    "front": "compatoplenty:block/hellbark_cabinet_front_open",
-    "side": "compatoplenty:block/hellbark_cabinet_side",
-    "top": "compatoplenty:block/hellbark_cabinet_top"
-  }
-}

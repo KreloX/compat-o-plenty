@@ -1,14 +1,14 @@
 {
   "values": [
-    "compatoplenty:hollow_willow_log",
-    "compatoplenty:hollow_hellbark_log",
-    "compatoplenty:hollow_fir_log",
-    "compatoplenty:hollow_mahogany_log",
-    "compatoplenty:hollow_palm_log",
-    "compatoplenty:hollow_redwood_log",
-    "compatoplenty:hollow_magic_log",
-    "compatoplenty:hollow_jacaranda_log",
-    "compatoplenty:hollow_umbran_log",
-    "compatoplenty:hollow_dead_log"
+    "compat_o_plenty:hollow_jacaranda_log",
+    "compat_o_plenty:hollow_dead_log",
+    "compat_o_plenty:hollow_magic_log",
+    "compat_o_plenty:hollow_hellbark_log",
+    "compat_o_plenty:hollow_willow_log",
+    "compat_o_plenty:hollow_redwood_log",
+    "compat_o_plenty:hollow_umbran_log",
+    "compat_o_plenty:hollow_fir_log",
+    "compat_o_plenty:hollow_palm_log",
+    "compat_o_plenty:hollow_mahogany_log"
   ]
 }

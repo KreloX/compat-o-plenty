@@ -1,0 +1,6 @@
+{
+  "parent": "blueprint:block/template_boards",
+  "textures": {
+    "all": "compat_o_plenty:block/palm_boards"
+  }
+}

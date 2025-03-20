@@ -1,16 +1,16 @@
 {
   "values": [
-    "compatoplenty:flowering_oak_leaf_carpet",
-    "compatoplenty:rainbow_birch_leaf_carpet",
-    "compatoplenty:origin_leaf_carpet",
-    "compatoplenty:red_maple_leaf_carpet",
-    "compatoplenty:orange_maple_leaf_carpet",
-    "compatoplenty:yellow_maple_leaf_carpet",
-    "compatoplenty:flowering_oak_leaf_pile",
-    "compatoplenty:rainbow_birch_leaf_pile",
-    "compatoplenty:origin_leaf_pile",
-    "compatoplenty:red_maple_leaf_pile",
-    "compatoplenty:orange_maple_leaf_pile",
-    "compatoplenty:yellow_maple_leaf_pile"
+    "compat_o_plenty:flowering_oak_leaf_carpet",
+    "compat_o_plenty:rainbow_birch_leaf_carpet",
+    "compat_o_plenty:origin_leaf_carpet",
+    "compat_o_plenty:red_maple_leaf_carpet",
+    "compat_o_plenty:orange_maple_leaf_carpet",
+    "compat_o_plenty:yellow_maple_leaf_carpet",
+    "compat_o_plenty:flowering_oak_leaf_pile",
+    "compat_o_plenty:rainbow_birch_leaf_pile",
+    "compat_o_plenty:origin_leaf_pile",
+    "compat_o_plenty:red_maple_leaf_pile",
+    "compat_o_plenty:orange_maple_leaf_pile",
+    "compat_o_plenty:yellow_maple_leaf_pile"
   ]
 }

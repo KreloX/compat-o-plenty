@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "compat_o_plenty:block/galanos_block",
+    "side": "compat_o_plenty:block/galanos_block",
+    "top": "compat_o_plenty:block/galanos_block"
+  }
+}

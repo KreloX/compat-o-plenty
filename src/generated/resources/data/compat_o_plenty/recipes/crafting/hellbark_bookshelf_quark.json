@@ -1,0 +1,34 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "quark:flag",
+          "flag": "variant_bookshelves"
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shaped",
+        "category": "misc",
+        "key": {
+          "#": {
+            "item": "biomesoplenty:hellbark_planks"
+          },
+          "B": {
+            "item": "minecraft:book"
+          }
+        },
+        "pattern": [
+          "###",
+          "BBB",
+          "###"
+        ],
+        "result": {
+          "item": "compat_o_plenty:hellbark_bookshelf"
+        },
+        "show_notification": true
+      }
+    }
+  ]
+}

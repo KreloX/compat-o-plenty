@@ -1,0 +1,34 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "twigs"
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shaped",
+        "category": "misc",
+        "key": {
+          "#": {
+            "item": "biomesoplenty:redwood_slab"
+          },
+          "I": {
+            "item": "biomesoplenty:redwood_fence"
+          }
+        },
+        "pattern": [
+          "###",
+          "I I",
+          "I I"
+        ],
+        "result": {
+          "item": "compat_o_plenty:redwood_table"
+        },
+        "show_notification": true
+      }
+    }
+  ]
+}

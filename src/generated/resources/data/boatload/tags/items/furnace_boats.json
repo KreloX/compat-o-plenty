@@ -1,14 +1,14 @@
 {
   "values": [
-    "compatoplenty:willow_furnace_boat",
-    "compatoplenty:hellbark_furnace_boat",
-    "compatoplenty:fir_furnace_boat",
-    "compatoplenty:mahogany_furnace_boat",
-    "compatoplenty:palm_furnace_boat",
-    "compatoplenty:redwood_furnace_boat",
-    "compatoplenty:magic_furnace_boat",
-    "compatoplenty:jacaranda_furnace_boat",
-    "compatoplenty:umbran_furnace_boat",
-    "compatoplenty:dead_furnace_boat"
+    "compat_o_plenty:jacaranda_furnace_boat",
+    "compat_o_plenty:dead_furnace_boat",
+    "compat_o_plenty:magic_furnace_boat",
+    "compat_o_plenty:hellbark_furnace_boat",
+    "compat_o_plenty:willow_furnace_boat",
+    "compat_o_plenty:redwood_furnace_boat",
+    "compat_o_plenty:umbran_furnace_boat",
+    "compat_o_plenty:fir_furnace_boat",
+    "compat_o_plenty:palm_furnace_boat",
+    "compat_o_plenty:mahogany_furnace_boat"
   ]
 }

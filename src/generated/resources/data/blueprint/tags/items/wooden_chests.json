@@ -1,14 +1,14 @@
 {
   "values": [
-    "compatoplenty:willow_chest",
-    "compatoplenty:hellbark_chest",
-    "compatoplenty:fir_chest",
-    "compatoplenty:mahogany_chest",
-    "compatoplenty:palm_chest",
-    "compatoplenty:redwood_chest",
-    "compatoplenty:magic_chest",
-    "compatoplenty:jacaranda_chest",
-    "compatoplenty:umbran_chest",
-    "compatoplenty:dead_chest"
+    "compat_o_plenty:jacaranda_chest",
+    "compat_o_plenty:dead_chest",
+    "compat_o_plenty:magic_chest",
+    "compat_o_plenty:hellbark_chest",
+    "compat_o_plenty:willow_chest",
+    "compat_o_plenty:redwood_chest",
+    "compat_o_plenty:umbran_chest",
+    "compat_o_plenty:fir_chest",
+    "compat_o_plenty:palm_chest",
+    "compat_o_plenty:mahogany_chest"
   ]
 }

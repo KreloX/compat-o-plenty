@@ -1,14 +1,14 @@
 {
   "values": [
-    "compatoplenty:willow_beehive",
-    "compatoplenty:hellbark_beehive",
-    "compatoplenty:fir_beehive",
-    "compatoplenty:mahogany_beehive",
-    "compatoplenty:palm_beehive",
-    "compatoplenty:redwood_beehive",
-    "compatoplenty:magic_beehive",
-    "compatoplenty:jacaranda_beehive",
-    "compatoplenty:umbran_beehive",
-    "compatoplenty:dead_beehive"
+    "compat_o_plenty:jacaranda_beehive",
+    "compat_o_plenty:dead_beehive",
+    "compat_o_plenty:magic_beehive",
+    "compat_o_plenty:hellbark_beehive",
+    "compat_o_plenty:willow_beehive",
+    "compat_o_plenty:redwood_beehive",
+    "compat_o_plenty:umbran_beehive",
+    "compat_o_plenty:fir_beehive",
+    "compat_o_plenty:palm_beehive",
+    "compat_o_plenty:mahogany_beehive"
   ]
 }

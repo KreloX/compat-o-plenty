@@ -1,0 +1,59 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "compat_o_plenty:block/palm_hedge_post"
+      },
+      "when": {
+        "extend": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "compat_o_plenty:block/palm_hedge_extend"
+      },
+      "when": {
+        "extend": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "compat_o_plenty:block/palm_hedge_side",
+        "uvlock": true
+      },
+      "when": {
+        "north": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "compat_o_plenty:block/palm_hedge_side",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "east": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "compat_o_plenty:block/palm_hedge_side",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "south": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "compat_o_plenty:block/palm_hedge_side",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "west": "true"
+      }
+    }
+  ]
+}

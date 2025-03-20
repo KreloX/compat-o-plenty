@@ -1,0 +1,10 @@
+{
+  "parent": "minecraft:block/orientable_with_bottom",
+  "textures": {
+    "bottom": "compat_o_plenty:block/willow_beehive_end",
+    "front": "compat_o_plenty:block/willow_beehive_front",
+    "particle": "compat_o_plenty:block/willow_beehive_side",
+    "side": "compat_o_plenty:block/willow_beehive_side",
+    "top": "compat_o_plenty:block/willow_beehive_end"
+  }
+}

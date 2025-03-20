@@ -1,15 +1,15 @@
 {
   "values": [
-    "compatoplenty:polished_rose_quartz",
-    "compatoplenty:polished_rose_quartz_stairs",
-    "compatoplenty:polished_rose_quartz_slab",
-    "compatoplenty:polished_rose_quartz_vertical_slab",
-    "compatoplenty:chiseled_polished_rose_quartz",
-    "compatoplenty:polished_rose_quartz_bricks",
-    "compatoplenty:polished_rose_quartz_brick_stairs",
-    "compatoplenty:polished_rose_quartz_brick_slab",
-    "compatoplenty:polished_rose_quartz_brick_vertical_slab",
-    "compatoplenty:polished_rose_quartz_brick_wall",
-    "compatoplenty:cracked_polished_rose_quartz_bricks"
+    "compat_o_plenty:polished_rose_quartz",
+    "compat_o_plenty:polished_rose_quartz_stairs",
+    "compat_o_plenty:polished_rose_quartz_slab",
+    "compat_o_plenty:polished_rose_quartz_vertical_slab",
+    "compat_o_plenty:chiseled_polished_rose_quartz",
+    "compat_o_plenty:polished_rose_quartz_bricks",
+    "compat_o_plenty:polished_rose_quartz_brick_stairs",
+    "compat_o_plenty:polished_rose_quartz_brick_slab",
+    "compat_o_plenty:polished_rose_quartz_brick_vertical_slab",
+    "compat_o_plenty:polished_rose_quartz_brick_wall",
+    "compat_o_plenty:cracked_polished_rose_quartz_bricks"
   ]
 }

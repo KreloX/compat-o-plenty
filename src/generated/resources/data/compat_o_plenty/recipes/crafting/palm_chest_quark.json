@@ -1,0 +1,31 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "quark:flag",
+          "flag": "variant_chests"
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shaped",
+        "category": "misc",
+        "key": {
+          "#": {
+            "item": "biomesoplenty:palm_planks"
+          }
+        },
+        "pattern": [
+          "###",
+          "# #",
+          "###"
+        ],
+        "result": {
+          "item": "compat_o_plenty:palm_chest"
+        },
+        "show_notification": true
+      }
+    }
+  ]
+}

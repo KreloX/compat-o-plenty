@@ -1,0 +1,9 @@
+{
+  "parent": "twigs:block/template_table_top",
+  "textures": {
+    "bottom": "compat_o_plenty:block/willow_table_bottom",
+    "particle": "biomesoplenty:block/willow_planks",
+    "side": "compat_o_plenty:block/willow_table",
+    "top": "compat_o_plenty:block/willow_table_top"
+  }
+}
